@@ -4,7 +4,7 @@ recursive-include references *.md
 recursive-include docs *.md *.json
 recursive-include scripts *.py
 recursive-include tests *.py *.json *.png
-recursive-include examples *.md *.png *.svg *.pdf
+recursive-include examples *.md *.json *.png *.svg *.pdf
 recursive-include marketing *.md
 recursive-include src/arabic_calligraphy/data *
 recursive-include .github *.md *.yml

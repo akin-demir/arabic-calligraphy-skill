@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import tarfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,11 +36,15 @@ def main():
     if len(wheels) != 1 or len(sources) != 1:
         raise SystemExit('Expected exactly one RC3 wheel and source distribution')
     with zipfile.ZipFile(wheels[0]) as archive:
+        assert 'arabic_calligraphy/grid.py' in archive.namelist()
         records = json.loads((ROOT/'src/arabic_calligraphy/data/fonts.json').read_text())
         assert sum(name.endswith('.ttf') for name in archive.namelist()) == len(records)
         assert all(any(name.endswith('/fonts/'+record['file']) for name in archive.namelist()) for record in records)
         for notice in ['OFL-and-notices.txt','Layla-OFL.txt','Layla-FONTLOG.txt','Layla-Authors','Layla-SOURCE.md']:
             assert any(name.endswith('/fonts/'+notice) for name in archive.namelist()), notice
+    with tarfile.open(sources[0], 'r:gz') as archive:
+        assert any(name.endswith('/examples/square-kufic/allah-study.json')
+                   for name in archive.getnames()), 'Source distribution must include editable grid data'
     for path in wheels+sources:
         shutil.copy2(path,dest/path.name)
     subprocess.run(['git','archive','--format=tar.gz','--prefix=arabic-calligraphy-skill/',

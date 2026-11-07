@@ -82,12 +82,12 @@ class Layout:
                 raise ValueError("Pango produced unknown glyphs; export refused")
             ink, logical = Rectangle(), Rectangle()
             n.extents(self.ptr, C.byref(ink), C.byref(logical))
-            self.left = min(0, ink.x, logical.x)
+            self.left = min(0, ink.x) if ink.x < 0 else max(0, ink.x + ink.width - width)
             self.top = min(0, ink.y, logical.y)
             self.right = max(ink.x + ink.width, logical.x + logical.width)
             self.bottom = max(ink.y + ink.height, logical.y + logical.height)
             self.height = self.bottom - self.top
-            self.width = self.right - self.left
+            self.width = max(ink.width, logical.width)
         except BaseException:
             self.close()
             raise

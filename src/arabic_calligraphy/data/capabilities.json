@@ -40,13 +40,14 @@
       "font_family": "Noto Naskh Arabic",
       "status": "Approximate",
       "implemented": true,
-      "technical_verified": false,
+      "technical_verified": true,
       "expert_authenticity_reviewed": false,
       "review_evidence": null,
       "research_status": "introductory",
       "sources": [
         "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
-      ]
+      ],
+      "verification_scope": "Local Unicode corpus, glyph coverage, atomic exports, bounds, embedded fonts and visual fixtures. Reader-independent PDF extraction excluded and release-blocking."
     },
     {
       "id": "ruqah",
@@ -86,13 +87,14 @@
       "font_family": "Noto Kufi Arabic",
       "status": "Approximate",
       "implemented": true,
-      "technical_verified": false,
+      "technical_verified": true,
       "expert_authenticity_reviewed": false,
       "review_evidence": null,
       "research_status": "introductory",
       "sources": [
         "https://www.metmuseum.org/essays/calligraphy-in-islamic-art"
-      ]
+      ],
+      "verification_scope": "Local Unicode corpus, glyph coverage, atomic exports, bounds, embedded fonts and visual fixtures. Reader-independent PDF extraction excluded and release-blocking."
     },
     {
       "id": "square-kufic",
@@ -201,13 +203,14 @@
       "font_family": "Noto Nastaliq Urdu",
       "status": "Approximate",
       "implemented": true,
-      "technical_verified": false,
+      "technical_verified": true,
       "expert_authenticity_reviewed": false,
       "review_evidence": null,
       "research_status": "introductory",
       "sources": [
         "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
-      ]
+      ],
+      "verification_scope": "Local Unicode corpus, glyph coverage, atomic exports, bounds, embedded fonts and visual fixtures. Reader-independent PDF extraction excluded and release-blocking."
     },
     {
       "id": "shikasteh",

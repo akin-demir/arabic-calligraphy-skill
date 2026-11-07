@@ -1,0 +1,10 @@
+name: Style or scholarly correction
+description: Propose evidence for a tradition, font or review
+body:
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sources, tradition and proposed change
+      description: Distinguish a reference correction from implemented rendering or expert review.
+    validations:
+      required: true

@@ -1,0 +1,17 @@
+name: Rendering defect
+description: Report a reproducible text, layout or export issue
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Input and command
+      description: Share only text and files you are allowed to disclose.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Versions and observed behavior
+      description: Include Python, native library versions, font/style and output format.
+    validations:
+      required: true

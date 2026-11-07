@@ -82,5 +82,32 @@
     "source": "https://github.com/notofonts/noto-fonts",
     "distribution": "Debian fonts-noto-core 20201225-2",
     "maintainer": "Noto project / Google"
+  },
+  {
+    "file": "LaylaDiwani.ttf",
+    "family": "LaylaDiwani",
+    "style": "Regular",
+    "version": "Version 2.0",
+    "copyright": "Copyright 2014, 2015, 2016, 2017, Mohammed Isam.\r\nLatin Glyphs and Numbers are taken from the font Urdu Khush Khati, version 1.5, Created by Basharat Ali at lfcsopensource with FontForge 2.0 (http://fontforge.sf.net). This font is released under SIL Open Font License.",
+    "license": "OFL-1.1",
+    "license_embedding_permission": true,
+    "embedding_permission": false,
+    "redistribution_permission": true,
+    "fs_type": 2,
+    "sha256": "089116f093e8e79ffd76f53c89dee1b4040d15d5568e1ecbafc937f8acb9b27b",
+    "unicode_count": 456,
+    "opentype": [
+      "GSUB"
+    ],
+    "export_formats": [
+      "png",
+      "svg"
+    ],
+    "positioning": "legacy-no-gpos",
+    "source": "https://fontlibrary.org/en/font/layla-diwani",
+    "maintainer": "Mohammed Isam",
+    "distribution": "Layla 2.0, ALT Linux 2.0-alt1_2 mirror",
+    "mirror": "https://github.com/NazirNayal8/nazirnayal.github.io/blob/d00ad06f30de6557a61bfe1e9bcdd4873eb4f7c7/assets/fonts/layla/LaylaDiwani.ttf",
+    "limitations": "Original fsType=2 retained: PDF embedding refused. No GPOS: combining marks refused. Font-based approximate Diwani, not composed/Jali calligraphy."
   }
 ]

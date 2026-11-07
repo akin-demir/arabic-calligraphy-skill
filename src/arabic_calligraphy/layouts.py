@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 
 from .engine import (
-    Canvas, Layout, backend, color, dimensions, family_for, validate_text,
+    Canvas, Layout, backend, color, dimensions, family_for, validate_text, validate_style_output,
 )
 from .fonts import validate_coverage
 
@@ -36,7 +36,7 @@ def poster(text, output, *, style="kufic", subtitle=None, width=1080, height=135
     """Measured headline and optional Naskh supporting line with a fine border."""
     validate_text(text)
     dimensions(width, height, margin, font_size)
-    family = family_for(style)
+    family = validate_style_output(style, output)
     text_all = text + ("\n" + subtitle if subtitle else "")
     with Canvas(output, width, height, background, text_all) as canvas:
         border(canvas, margin / 2)
@@ -83,7 +83,7 @@ def document(text, output, *, body_style="naskh", width=595, height=842,
     if Path(output).suffix.lower() != ".pdf":
         raise ValueError("Documents require .pdf output")
     dimensions(width, height, margin, font_size)
-    family = family_for(body_style)
+    family = validate_style_output(body_style, output)
     n = backend()
     page = 1
     y = margin

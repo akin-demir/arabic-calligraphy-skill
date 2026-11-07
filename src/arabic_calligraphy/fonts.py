@@ -3,6 +3,7 @@
 import hashlib
 import json
 import warnings
+import unicodedata
 from functools import lru_cache
 from pathlib import Path
 
@@ -26,15 +27,23 @@ def coverage():
         if hashlib.sha256(path.read_bytes()).hexdigest() != record["sha256"]:
             raise ValueError(f"Font hash mismatch: {path.name}")
         with TTFont(path) as font:
-            if font["OS/2"].fsType != 0 or record["license"] != "OFL-1.1":
+            if font["OS/2"].fsType != record["fs_type"] or record["license"] != "OFL-1.1":
                 raise ValueError(f"Unverified embedding license: {path.name}")
-            if not all(t in font for t in ("GSUB", "GPOS")):
+            if record["fs_type"] != 0 and not (
+                record["fs_type"] == 2 and record.get("embedding_permission") is False
+                and record.get("export_formats") == ["png", "svg"]
+            ):
+                raise ValueError(f"Unsupported font embedding policy: {path.name}")
+            required = ("GSUB",) if record.get("positioning") == "legacy-no-gpos" else ("GSUB", "GPOS")
+            if not all(t in font for t in required):
                 raise ValueError(f"Missing shaping tables: {path.name}")
             result[record["family"]] = set(font.getBestCmap())
     return result
 
 
 def validate_coverage(text, family):
+    if family == "LaylaDiwani" and any(unicodedata.category(c) in ("Mn", "Me") for c in text):
+        raise ValueError("Diwani combining marks/harakat are not supported by this font's positioning; use unvocalized text or Naskh")
     primary = coverage()[family]
     latin = coverage()["Noto Sans"]
     missing = set()

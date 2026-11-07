@@ -51,3 +51,7 @@ Agent Skills frontmatter and reference structure are checked locally. Codex/Clau
 ## Subsequent owner-authorized RC1 decision
 
 The owner requested a first private release candidate for testing before continuing. Experimental RC1 publication is now authorized with PDF-001 disclosed; this supersedes the earlier prohibition on any candidate publication, while leaving the stable PDF gate and future-release approval intact. RC1 assets are built from the exact main commit by GitHub Actions. See release-plan.json, RC1 notes and the RC2 plan. Repository administration controls remain unapplied where the connection lacks capability.
+
+## RC2 Diwani increment
+
+The owner requested Diwani implementation and a new release candidate. RC2 adds unmodified OFL LaylaDiwani Regular 2.0, with a pinned mirror, author/license notices and exact hash. Its original fsType=2 and absent GPOS are preserved: only unvocalized PNG and outlined SVG are enabled; PDF/harakat are explicitly refused. No Jali or custom logo composition is claimed. All 470 local tests pass, including 89 Diwani corpus inputs, export-policy checks and a raster fixture. The local host still has old pypdf; the exact tagged candidate is rebuilt and audited with the patched dependency in GitHub Actions. RC1 and its release history remain immutable. The remaining plan is now RC3 in docs/next-candidate.md.

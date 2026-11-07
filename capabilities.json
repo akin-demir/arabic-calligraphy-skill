@@ -94,7 +94,8 @@
       "sources": [
         "https://www.metmuseum.org/essays/calligraphy-in-islamic-art"
       ],
-      "verification_scope": "Local Unicode corpus, glyph coverage, atomic exports, bounds, embedded fonts and visual fixtures. Reader-independent PDF extraction excluded and release-blocking."
+      "verification_scope": "Local Unicode corpus, glyph coverage, atomic exports, bounds, embedded fonts and visual fixtures. Reader-independent PDF extraction excluded and release-blocking.",
+      "implementation_label": "Modern Kufi typography (Noto Kufi Arabic); not Square Kufic"
     },
     {
       "id": "square-kufic",
@@ -153,16 +154,25 @@
       "characteristics": "Rounded sweeping forms and compact connections.",
       "use_cases": "Formal display under expert supervision",
       "readability": "Compact joins can reduce readability.",
-      "font_family": null,
-      "status": "Reference Only",
-      "implemented": false,
-      "technical_verified": false,
+      "font_family": "LaylaDiwani",
+      "status": "Approximate",
+      "implemented": true,
+      "technical_verified": true,
       "expert_authenticity_reviewed": false,
       "review_evidence": null,
       "research_status": "introductory",
       "sources": [
-        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
-      ]
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/",
+        "https://fontlibrary.org/en/font/layla-diwani",
+        "https://fedoraproject.org/wiki/I18N/Fonts/Audit"
+      ],
+      "export_formats": [
+        "png",
+        "svg"
+      ],
+      "combining_marks": false,
+      "verification_scope": "Unvocalized font-based display lettering only. PDF and combining marks are refused; no expert authenticity review.",
+      "limitations": "Original fsType=2 retained: PDF embedding refused. No GPOS: combining marks refused. Font-based approximate Diwani, not composed/Jali calligraphy."
     },
     {
       "id": "diwani-jali",

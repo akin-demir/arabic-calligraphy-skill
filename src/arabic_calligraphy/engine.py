@@ -10,7 +10,7 @@ import tempfile
 from functools import lru_cache
 from xml.etree import ElementTree as ET
 
-from .fonts import DATA, register, validate_coverage
+from .fonts import DATA, manifest, register, validate_coverage
 from .native import Native, Rectangle
 
 
@@ -29,9 +29,18 @@ def family_for(style):
     for entry in styles():
         if entry["id"] == style:
             if not entry["implemented"]:
-                raise ValueError(f"Style '{style}' is Reference Only; choose naskh, kufic or nastaliq")
+                raise ValueError(f"Style '{style}' is Reference Only; choose naskh, kufic, nastaliq or diwani")
             return entry["font_family"]
     raise ValueError(f"Unknown style: {style}")
+
+
+def validate_style_output(style, output):
+    family = family_for(style)
+    record = next(item for item in manifest() if item["family"] == family)
+    allowed = record.get("export_formats", ["png", "svg", "pdf"])
+    if Path(output).suffix.lower().lstrip(".") not in allowed:
+        raise ValueError(f"Style '{style}' supports only {', '.join(allowed)}; this font's embedding flag prevents PDF export")
+    return family
 
 
 def validate_text(text):
@@ -204,7 +213,7 @@ def render(text, output, *, style="naskh", width=1080, height=1080, font_size=96
     dimensions(width, height, margin, font_size)
     if align not in ("left", "center", "right"):
         raise ValueError("Alignment must be left, center or right")
-    family = family_for(style)
+    family = validate_style_output(style, output)
     validate_coverage(text, family)
     fg = color(foreground)
     with Canvas(output, width, height, background, text) as canvas:

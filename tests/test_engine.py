@@ -28,16 +28,16 @@ class Artifacts(unittest.TestCase):
 
     def test_registry(self):
         self.assertEqual(len(styles()), 20)
-        self.assertEqual(sum(s['implemented'] for s in styles()), 3)
+        self.assertEqual(sum(s['implemented'] for s in styles()), 4)
         self.assertFalse(any(s['expert_authenticity_reviewed'] for s in styles()))
         self.assertEqual(json.loads((ROOT/'capabilities.json').read_text())['styles'], styles())
 
     def test_font_licenses_hashes_and_coverage(self):
-        self.assertEqual(len(coverage()), 4)
+        self.assertEqual(len(coverage()), 5)
         for record in manifest():
             self.assertEqual(record['license'], 'OFL-1.1')
-            self.assertEqual(record['fs_type'], 0)
-            self.assertTrue(record['embedding_permission'])
+            self.assertEqual(record['fs_type'], 2 if record['family'] == 'LaylaDiwani' else 0)
+            self.assertEqual(record['embedding_permission'], record['family'] != 'LaylaDiwani')
 
     def test_reference_only_fails(self):
         for entry in styles():
@@ -152,6 +152,48 @@ class Artifacts(unittest.TestCase):
             self.assertGreaterEqual(box[0],99)
             self.assertLessEqual(box[2],541)
 
+    def test_diwani_pdf_refused_without_replacement(self):
+        p=self.root/'diwani.pdf';p.write_bytes(b'original')
+        with self.assertRaisesRegex(ValueError,'embedding flag'):
+            render('العلم نور',p,style='diwani')
+        self.assertEqual(p.read_bytes(),b'original')
+
+    def test_diwani_poster_pdf_refused(self):
+        with self.assertRaisesRegex(ValueError,'embedding flag'):
+            poster('العلم نور',self.root/'poster.pdf',style='diwani')
+
+    def test_diwani_document_body_refused(self):
+        with self.assertRaisesRegex(ValueError,'embedding flag'):
+            document('العلم نور',self.root/'document.pdf',body_style='diwani')
+
+    def test_diwani_marks_refused(self):
+        for text in ['بَ','بّ','مُحَمَّد','ب\u0653']:
+            with self.subTest(text=text), self.assertRaisesRegex(ValueError,'combining marks'):
+                render(text,self.root/'marks.svg',style='diwani')
+
+    def test_diwani_no_silent_arabic_fallback(self):
+        with self.assertRaisesRegex(ValueError,'lacks coverage'):
+            render('العربية \u08b0',self.root/'missing.svg',style='diwani')
+
+    def test_diwani_png_and_svg(self):
+        for ext in ['png','svg']:
+            p=self.root/f'diwani.{ext}'
+            render('اللغة العربية',p,style='diwani',width=1000,height=450,font_size=95)
+            self.assertGreater(p.stat().st_size,100)
+        root=ET.parse(self.root/'diwani.svg').getroot()
+        self.assertEqual(root.find('{http://www.w3.org/2000/svg}desc').text,'اللغة العربية')
+        self.assertFalse(root.findall('.//{http://www.w3.org/2000/svg}text'))
+
+    def test_diwani_visual_regression(self):
+        p=self.root/'diwani.png'
+        render('العلم نور',p,style='diwani',width=640,height=360,font_size=70,
+               margin=30,background='#FFFFFF',align='center')
+        with Image.open(p) as current, Image.open(ROOT/'tests/visual/diwani.png') as ref:
+            a,b=current.convert('RGB'),ref.convert('RGB')
+            box=ImageChops.difference(b,Image.new('RGB',b.size,'white')).getbbox()
+            delta=ImageStat.Stat(ImageChops.difference(a.crop(box),b.crop(box)))
+            self.assertLess(sum(delta.mean)/3,10)
+
     def test_cli_success(self):
         with contextlib.redirect_stdout(io.StringIO()):
             code=main(['render','--text','العلم نور','--size','640x360','--font-size','48',
@@ -215,3 +257,11 @@ for i,kwargs in enumerate([
     {'foreground':'red'},{'background':'#ZZZZZZ'},{'height':float('inf')},
 ]):
     setattr(Artifacts,f'test_invalid_configuration_{i:02d}',invalid_test(kwargs))
+
+# Diwani intentionally refuses vocalized input: test every unmarked corpus string
+# through native shaping and exact SVG metadata, while explicit rejection tests
+# above cover the unsupported inputs and exports.
+import unicodedata
+for index,text in enumerate(CORPUS):
+    if not any(unicodedata.category(c) in ('Mn','Me') for c in text):
+        setattr(Artifacts,f'test_diwani_unicode_{index:03d}',unicode_test(text,'diwani'))

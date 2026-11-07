@@ -13,7 +13,7 @@ python -m pip install .
 arabic-calligraphy --version
 ```
 
-For development use `python -m pip install '.[dev]'`. Native libraries and Python dependencies must be installed before running the renderer. The four bundled fonts register privately inside this process; no system font installation or network request is performed during rendering. If a bundled file is absent or modified, reinstall rather than silently falling back.
+For development use `python -m pip install '.[dev]'`. Native libraries and Python dependencies must be installed before running the renderer. The five bundled fonts register privately inside this process; no system font installation or network request is performed during rendering. If a bundled file is absent or modified, reinstall rather than silently falling back.
 
 Use the development branch until merged. The package has not been published to PyPI; do not assume a same-name package on an index is this project. Build a wheel with `python -m build` after installing development tooling. `requirements-dev.txt` pins the local Python verification toolchain. Native system libraries remain platform-managed; CI records their versions rather than claiming bit-identical output on all systems.
 

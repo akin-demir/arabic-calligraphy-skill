@@ -24,7 +24,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--release',action='store_true',help='Stable: enforce exact PDF extraction')
-    mode.add_argument('--candidate',action='store_true',help='Explicitly scoped experimental RC1')
+    mode.add_argument('--candidate',action='store_true',help='Explicitly scoped experimental RC2')
     args = parser.parse_args(argv)
     suite = unittest.defaultTestLoader.discover(str(ROOT/'tests'))
     output = io.StringIO()
@@ -67,8 +67,8 @@ def main(argv=None):
                   'Maintainer publication approval is required.'])
     plan = json.loads((ROOT/'release-plan.json').read_text()) if args.candidate else {}
     semantic_ok = all(e['exact_actual_text_mapping'] for e in extraction)
-    accepted = any(e['id'] == 'PDF-001' and e.get('accepted_for_rc1_testing') for e in plan.get('known_issues', []))
-    candidate_ok = (plan.get('tag') == 'v0.1.0-rc.1' and plan.get('publication_authorized') is True
+    accepted = any(e['id'] == 'PDF-001' and e.get('accepted_for_testing') for e in plan.get('known_issues', []))
+    candidate_ok = (plan.get('tag') == 'v0.1.0-rc.2' and plan.get('publication_authorized') is True
                     and plan.get('python_version') == __version__ and accepted and semantic_ok and result.wasSuccessful() and not result.skipped)
     data['candidate_ready'] = candidate_ok if args.candidate else None
     data['candidate_tag'] = plan.get('tag')

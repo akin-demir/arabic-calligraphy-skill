@@ -18,6 +18,12 @@ def main():
         poster('اللغة العربية', dest / f'poster.{ext}', subtitle='حروف تحمل المعنى')
         certificate('أحمد محمد', 'تقديراً للجهود المتميزة في خدمة اللغة العربية',
                     dest / f'certificate.{ext}', signature='فريق اللغة العربية')
+    for ext in ('png','svg'):
+        render('العلم نور\nاللغة العربية',dest/f'diwani.{ext}',style='diwani',
+               width=1200,height=640,font_size=110,margin=70,
+               background='#FAF6EC',align='center')
+        poster('اللغة العربية',dest/f'diwani-poster.{ext}',style='diwani',
+               subtitle='حروف تحمل المعنى',font_size=110)
     render('أهلاً وسهلاً', dest / 'wordmark.svg', width=900, height=360, font_size=90,
            align='center')
     render('أ إ آ ء ؤ ئ لا لَا\nبَ بِ بُ بّ بْ بً بٍ بٌ\nالعربية — Arabic 123 / ١٢٣',

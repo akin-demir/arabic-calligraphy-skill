@@ -131,6 +131,27 @@ class Artifacts(unittest.TestCase):
         p=self.root/'certificate.pdf';certificate('أحمد محمد','تقديراً للجهود المتميزة',p)
         self.assertEqual(len(PdfReader(p).pages),1)
 
+    def test_certificate_rejects_empty_required_fields(self):
+        for recipient, body in [('', 'نص'), ('اسم', '   ')]:
+            with self.assertRaises(ValueError):
+                certificate(recipient, body, self.root/'blank.pdf')
+
+    def test_certificate_scales_canvas(self):
+        p=self.root/'small.png'
+        certificate('أحمد', 'شكراً', p, width=595, height=421)
+        with Image.open(p) as image:
+            self.assertEqual(image.size, (595,421))
+
+    def test_poster_respects_large_margin(self):
+        p=self.root/'poster.png'
+        poster('نور',p,width=640,height=640,font_size=28,margin=200,
+               background='transparent',foreground='#FFFFFF')
+        with Image.open(p) as image:
+            # The decorative frame is intentionally at half the margin.
+            box=image.getchannel('A').getbbox()
+            self.assertGreaterEqual(box[0],99)
+            self.assertLessEqual(box[2],541)
+
     def test_cli_success(self):
         with contextlib.redirect_stdout(io.StringIO()):
             code=main(['render','--text','العلم نور','--size','640x360','--font-size','48',

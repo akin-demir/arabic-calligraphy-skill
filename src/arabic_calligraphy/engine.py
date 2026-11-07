@@ -168,7 +168,8 @@ class Canvas:
                     desc = ET.Element("{http://www.w3.org/2000/svg}desc")
                     desc.text = self.text
                     tree.getroot().insert(0, desc)
-                    tree.write(self.temp, encoding="utf-8", xml_declaration=True)
+                    serialized = ET.tostring(tree.getroot(), encoding="utf-8", xml_declaration=True)
+                    Path(self.temp).write_bytes(serialized.replace(b"\r", b"&#13;"))
                 if self.suffix == ".pdf" and self.page_texts:
                     from .pdf import attach_actual_text
 

@@ -40,29 +40,34 @@ def poster(text, output, *, style="kufic", subtitle=None, width=1080, height=135
     text_all = text + ("\n" + subtitle if subtitle else "")
     with Canvas(output, width, height, background, text_all) as canvas:
         border(canvas, margin / 2)
-        draw_block(canvas, text, family, font_size, margin, height * .28,
-                   width - 2 * margin, height * .36, ink=foreground)
+        draw_block(canvas, text, family, font_size, margin, margin + (height - 2 * margin) * .25,
+                   width - 2 * margin, (height - 2 * margin) * .4, ink=foreground)
         if subtitle:
             draw_block(canvas, subtitle, family_for("naskh"), font_size * .42, margin,
-                       height * .70, width - 2 * margin, height * .18, ink=foreground)
+                       margin + (height - 2 * margin) * .75, width - 2 * margin,
+                       (height - 2 * margin) * .25, ink=foreground)
     return Path(output)
 
 
 def certificate(recipient, body, output, *, title="شهادة تقدير", signature="",
                 width=1190, height=842):
     """Landscape certificate; Naskh typography, not the Ijazah calligraphic hand."""
+    validate_text(recipient)
+    validate_text(body)
     dimensions(width, height, 70, 52)
+    scale = min(width / 1190, height / 842)
     text_all = "\n".join(x for x in (title, recipient, body, signature) if x)
     with Canvas(output, width, height, "#FAF6EC", text_all) as canvas:
-        border(canvas, 30)
-        border(canvas, 40)
+        border(canvas, 30 * scale)
+        border(canvas, 40 * scale)
         family = family_for("naskh")
         for text, size, y, available in (
             (title, 64, 90, 150), (recipient, 52, 260, 130),
             (body, 30, 430, 180), (signature, 26, 680, 80),
         ):
             if text:
-                draw_block(canvas, text, family, size, 80, y, width - 160, available,
+                draw_block(canvas, text, family, size * scale, 80 * scale, y * height / 842,
+                           width - 160 * scale, available * height / 842,
                            ink="#132B2A")
     return Path(output)
 

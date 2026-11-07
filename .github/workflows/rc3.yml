@@ -1,14 +1,14 @@
-name: Publish authorized RC2
+name: Publish authorized RC3
 on:
   push:
     branches: [main]
     paths:
-      - .github/workflows/rc2.yml
+      - .github/workflows/rc3.yml
       - release-plan.json
 permissions:
   contents: read
 concurrency:
-  group: release-v0.1.0-rc.2
+  group: release-v0.1.0-rc.3
   cancel-in-progress: false
 jobs:
   build-candidate:
@@ -35,7 +35,7 @@ jobs:
         run: python scripts/prepare_candidate.py --commit "$SOURCE_COMMIT"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: rc2-bundle
+          name: rc3-bundle
           path: candidate/
           if-no-files-found: error
   publish-prerelease:
@@ -47,7 +47,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: rc2-bundle
+          name: rc3-bundle
           path: candidate
       - name: Publish exactly the owner-authorized prerelease
         env:
@@ -59,10 +59,19 @@ jobs:
           set -euo pipefail
           cd candidate
           sha256sum -c SHA256SUMS
-          python -c 'import json,os; m=json.load(open("release-manifest.json")); assert m["tag"]=="v0.1.0-rc.2" and m["commit"]==os.environ["SOURCE_COMMIT"]'
-          if gh release view v0.1.0-rc.2 >/dev/null 2>&1; then
-            echo 'RC2 already exists; refusing to overwrite an existing release.'
+          python -c 'import json,os; m=json.load(open("release-manifest.json")); assert m["tag"]=="v0.1.0-rc.3" and m["commit"]==os.environ["SOURCE_COMMIT"]'
+          if gh release view v0.1.0-rc.3 >/dev/null 2>&1; then
+            echo 'RC3 already exists; refusing to overwrite an existing release.'
             exit 1
           fi
-          gh api --method POST "repos/$GH_REPO/git/refs" -f ref=refs/tags/v0.1.0-rc.2 -f sha="$SOURCE_COMMIT"
-          gh release create v0.1.0-rc.2 --verify-tag --target "$SOURCE_COMMIT" --prerelease --latest=false --title 'v0.1.0-rc.2 — Diwani typography candidate' --notes-file release-notes.md ./*
+          gh api --method POST "repos/$GH_REPO/git/refs" -f ref=refs/tags/v0.1.0-rc.3 -f sha="$SOURCE_COMMIT"
+          gh release create v0.1.0-rc.3 --verify-tag --target "$SOURCE_COMMIT" --prerelease --latest=false --title 'v0.1.0-rc.3 — manual Square Kufic candidate' --notes-file release-notes.md ./*
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Remove only completed inactive feature branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: python scripts/cleanup_rc3_branches.py --apply

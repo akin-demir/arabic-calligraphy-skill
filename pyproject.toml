@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "arabic-calligraphy-skill"
-version = "0.1.0rc3.dev0"
+version = "0.1.0rc3"
 description = "Honest Arabic typography workflows for AI agents"
 requires-python = ">=3.11"
 license = "MIT"

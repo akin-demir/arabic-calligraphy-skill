@@ -1,9 +1,9 @@
 {
-  "tag": "v0.1.0-rc.2",
-  "python_version": "0.1.0rc2",
+  "tag": "v0.1.0-rc.3",
+  "python_version": "0.1.0rc3",
   "channel": "experimental-prerelease",
   "publication_authorized": true,
-  "authorization_scope": "Repository owner requested Diwani implementation and a new release candidate in this session. RC2 publication is authorized; no stable release or future candidate is approved.",
+  "authorization_scope": "Owner explicitly requested merge to main, a release candidate, and cleanup of inactive branches on 2026-11-07. Authorizes RC3 prerelease publication only; no stable or future release.",
   "supported_styles": [
     "naskh",
     "kufic",
@@ -22,8 +22,13 @@
       "summary": "Unvocalized PNG/outlined SVG only; PDF and combining marks are refused because the original font has fsType=2 and no GPOS. No Jali or logo composition engine.",
       "accepted_for_testing": true,
       "blocks_stable_diwani_full_support": true
+    },
+    {
+      "id": "SQUARE-001",
+      "summary": "Manual labeled-cell studies only. No arbitrary-text conversion, packed composition engine or independent calligrapher review.",
+      "accepted_for_testing": true
     }
   ],
-  "next_candidate": "v0.1.0-rc.3",
+  "next_candidate": "v0.1.0-rc.4",
   "next_candidate_plan": "docs/next-candidate.md"
 }

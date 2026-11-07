@@ -10,6 +10,8 @@ From Arabic posters to properly shaped RTL documents. Local Python software, bun
 
 > Experimental candidate **v0.1.0-rc.2** (`0.1.0rc2`). [RC2 notes](docs/releases/v0.1.0-rc.2.md) · [Plan for RC3](docs/next-candidate.md). Four font-based rendering styles, twenty introductory tradition references. No expert authenticity certification. Exact Arabic PDF extraction varies by reader and blocks a stable release; RC2 is explicitly available for testing with that limitation.
 
+Development branch: `0.1.0rc3.dev0` adds a [manual Square Kufic grid study](docs/square-kufic.md), with editable letter cells and SVG/PNG export. It is not an automatic text composer or a released candidate. The latest published release remains RC2.
+
 ## What works
 
 - Offline Pango/HarfBuzz shaping and bidi layout; Cairo PNG, outlined SVG and native PDF output.

@@ -8,6 +8,7 @@ import sys
 from . import __version__
 from .engine import render, styles
 from .layouts import certificate, document, poster
+from .grid import inspect_grid, load_grid, render_grid
 
 
 def size(value):
@@ -23,6 +24,13 @@ def main(argv=None):
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("styles", help="Print honest style capability registry")
+    p = commands.add_parser("grid", help="Inspect or export a manually authored Square Kufic grid study")
+    p.add_argument("--input", type=Path, required=True)
+    p.add_argument("--output", type=Path)
+    p.add_argument("--unit", type=int, default=48)
+    p.add_argument("--padding", type=int, default=2)
+    p.add_argument("--foreground", default="#132B2A")
+    p.add_argument("--background", default="#F5EBD6")
     for name in ("render", "poster"):
         p = commands.add_parser(name)
         p.add_argument("--text", required=True)
@@ -53,6 +61,18 @@ def main(argv=None):
         if command == "styles":
             print(json.dumps(styles(), ensure_ascii=False, indent=2))
             return 0
+        if command == "grid":
+            source = args.pop("input")
+            output = args.pop("output")
+            data = load_grid(source)
+            report = inspect_grid(data)
+            if output is not None:
+                if source.resolve() == output.resolve():
+                    raise ValueError("Input and output must differ")
+                render_grid(data, output, **args)
+                report["output"] = str(output)
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+            return 0 if report["geometry_passed"] else 2
         if command in ("render", "poster"):
             args["width"], args["height"] = args.pop("size")
             result = (render if command == "render" else poster)(**args)

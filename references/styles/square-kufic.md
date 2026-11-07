@@ -8,7 +8,7 @@ A geometric tradition associated with architectural inscriptions. Orthogonal str
 
 ## Proportions, joining and composition
 
-Proportions depend on pen width, school and period. This reference does not prescribe a universal dot-count formula. Arabic joining classes remain meaningful; a font cannot reproduce every historical alternate or custom overlap. Composition requires a qualified practitioner. No automatic joining or layout implementation for this tradition is supplied.
+Proportions depend on pen width, school and period. This reference does not prescribe a universal dot-count formula. Arabic joining classes remain meaningful; a font cannot reproduce every historical alternate or custom overlap. Composition requires a qualified practitioner. No automatic joining or layout implementation for this tradition is supplied. A separate [manual grid study workflow](../../docs/square-kufic.md) exports explicitly authored letter cells with exact source-span mappings and limited geometry checks; it does not authenticate the writing.
 
 ## Uses and readability
 
@@ -24,8 +24,8 @@ Do not infer authenticity from a style name, distort letters to fit a canvas, re
 
 ## Examples and references
 
-Use the linked historical reference to study specimens. No generated output is presented as this style.
+Use the linked historical reference to study specimens. The manual grid workflow includes an original, unreviewed Allah letter study. No reviewed packed composition or arbitrary-text renderer is supplied.
 
-Source: https://www.metmuseum.org/essays/calligraphy-in-islamic-art
+Sources: https://www.metmuseum.org/essays/calligraphy-in-islamic-art and https://www.sakkal.com/instrctn/sq_kufi_alphabet.html (grid alignment, contextual forms and connection widths).
 
 Research status: introductory. These introductory notes are not a complete paleographic manual. Expert review and detailed school-specific measurements remain pending.

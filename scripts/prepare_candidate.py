@@ -1,10 +1,11 @@
-"""Bundle exact-commit RC2 artifacts and evidence after all candidate checks pass."""
+"""Bundle exact-commit RC3 artifacts and evidence after all candidate checks pass."""
 import argparse
 import hashlib
 import json
 from pathlib import Path
 import shutil
 import subprocess
+import tarfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,39 +23,47 @@ def main():
                     'capabilities.json','release-plan.json'],cwd=ROOT,check=True)
     plan = json.loads((ROOT/'release-plan.json').read_text())
     evidence = json.loads((ROOT/'reports/accuracy.json').read_text())
-    if plan['tag'] != 'v0.1.0-rc.2' or not evidence.get('candidate_ready'):
-        raise SystemExit('RC2 authorization and passing candidate evidence are required')
+    if plan['tag'] != 'v0.1.0-rc.3' or not evidence.get('candidate_ready'):
+        raise SystemExit('RC3 authorization and passing candidate evidence are required')
     if evidence.get('candidate_tag') != plan['tag']:
         raise SystemExit('Evidence is for a different candidate')
     dest = args.output.resolve()
     dest.mkdir(parents=True,exist_ok=True)
     if list(dest.iterdir()):
         raise SystemExit('Candidate output directory must be empty; existing artifacts preserved')
-    wheels = list((ROOT/'dist').glob('*0.1.0rc2*.whl'))
-    sources = list((ROOT/'dist').glob('*0.1.0rc2*.tar.gz'))
+    wheels = list((ROOT/'dist').glob('*0.1.0rc3*.whl'))
+    sources = list((ROOT/'dist').glob('*0.1.0rc3*.tar.gz'))
     if len(wheels) != 1 or len(sources) != 1:
-        raise SystemExit('Expected exactly one RC2 wheel and source distribution')
+        raise SystemExit('Expected exactly one RC3 wheel and source distribution')
     with zipfile.ZipFile(wheels[0]) as archive:
+        assert 'arabic_calligraphy/grid.py' in archive.namelist()
         records = json.loads((ROOT/'src/arabic_calligraphy/data/fonts.json').read_text())
         assert sum(name.endswith('.ttf') for name in archive.namelist()) == len(records)
         assert all(any(name.endswith('/fonts/'+record['file']) for name in archive.namelist()) for record in records)
         for notice in ['OFL-and-notices.txt','Layla-OFL.txt','Layla-FONTLOG.txt','Layla-Authors','Layla-SOURCE.md']:
             assert any(name.endswith('/fonts/'+notice) for name in archive.namelist()), notice
+    with tarfile.open(sources[0], 'r:gz') as archive:
+        assert any(name.endswith('/examples/square-kufic/allah-study.json')
+                   for name in archive.getnames()), 'Source distribution must include editable grid data'
     for path in wheels+sources:
         shutil.copy2(path,dest/path.name)
     subprocess.run(['git','archive','--format=tar.gz','--prefix=arabic-calligraphy-skill/',
                     f'--output={dest / "arabic-calligraphy-skill-source.tar.gz"}',head],
                    cwd=ROOT,check=True)
     subprocess.run(['git','archive','--format=zip','--prefix=arabic-calligraphy-skill/',
-                    f'--output={dest / "arabic-calligraphy-skill-rc2.zip"}',head],
+                    f'--output={dest / "arabic-calligraphy-skill-rc3.zip"}',head],
                    cwd=ROOT,check=True)
     with zipfile.ZipFile(dest/'gallery.zip','w',zipfile.ZIP_DEFLATED) as archive:
         for path in sorted((ROOT/'examples/gallery').iterdir()):
             if path.is_file():
                 archive.write(path,path.name)
+    with zipfile.ZipFile(dest/'square-kufic-study.zip','w',zipfile.ZIP_DEFLATED) as archive:
+        for path in sorted((ROOT/'examples/square-kufic').iterdir()):
+            if path.is_file():
+                archive.write(path,path.name)
     for name in ('accuracy.json','font-licenses.json'):
         shutil.copy2(ROOT/'reports'/name,dest/name)
-    shutil.copy2(ROOT/'docs/releases/v0.1.0-rc.2.md',dest/'release-notes.md')
+    shutil.copy2(ROOT/'docs/releases/v0.1.0-rc.3.md',dest/'release-notes.md')
     manifest = dict(tag=plan['tag'],python_version=plan['python_version'],commit=head,
                     channel=plan['channel'],known_issues=plan['known_issues'],
                     tests_passed=evidence['passed'],stable_release_ready=False,

@@ -4,7 +4,7 @@ description: Render Arabic typography, posters, certificates and documents. Use 
 license: MIT
 compatibility: Python 3.11+ on Linux with Pango, Cairo, Fontconfig and HarfBuzz. Install the Python package separately; skill installation alone does not install native dependencies.
 metadata:
-  version: "0.1.0rc3.dev0"
+  version: "0.1.0rc3"
 ---
 
 # Arabic typography workflow

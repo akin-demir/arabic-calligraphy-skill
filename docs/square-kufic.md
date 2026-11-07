@@ -1,6 +1,6 @@
 # Manual Square Kufic studies
 
-Development preview: a deterministic grid exporter for manually composed artwork.
+RC3 experimental workflow: a deterministic grid exporter for manually composed artwork.
 It does not convert arbitrary Arabic into Square Kufic, pack words into an emblem,
 or establish authenticity. `render --style square-kufic` remains unavailable.
 
@@ -12,7 +12,7 @@ above the heh is intentional in this simple study. This is not the tightly packe
 interlocking composition shown in the user's reference. Review the spelling and
 letterforms before treating the sample as approved artwork.
 
-From this branch's installed package, or with `PYTHONPATH=src` before each command:
+From the RC3 installed package, or with `PYTHONPATH=src` before each command:
 
 ```bash
 python -m arabic_calligraphy.cli grid --input examples/square-kufic/allah-study.json

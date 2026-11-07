@@ -1,0 +1,45 @@
+{
+  "tests_run": 374,
+  "passed": 374,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "documented": 20,
+  "implemented": 3,
+  "technically_verified": 3,
+  "expert_reviewed": 0,
+  "approximate": 3,
+  "reference_only": 17,
+  "fonts_licensed": 4,
+  "pdf_extraction": [
+    {
+      "input": "العلم نور",
+      "pypdf_extracted": "ملعلا  رون ",
+      "exact_extraction": false,
+      "exact_actual_text_mapping": true
+    },
+    {
+      "input": "بِسْمِ الله",
+      "pypdf_extracted": "ِمْسِب  للها ",
+      "exact_extraction": false,
+      "exact_actual_text_mapping": true
+    },
+    {
+      "input": "العربية — Arabic 123",
+      "pypdf_extracted": "Arabic 123—  ةيبرعلا  ",
+      "exact_extraction": false,
+      "exact_actual_text_mapping": true
+    }
+  ],
+  "python": "3.12.14",
+  "pypdf": "6.10.0",
+  "pango": "1.56.3",
+  "cairo": "1.18.4",
+  "release_ready": false,
+  "blockers": [
+    "Reader-independent exact Arabic PDF extraction is not established.",
+    "Remote CI and security audit must pass before release.",
+    "Maintainer publication approval is required."
+  ],
+  "snapshot_scope": "374 tests on the local host with pypdf 6.10.0; patched pypdf 6.21.4 passed the then-current 365-test suite separately in GitHub run 42353989686. This local host is not the release runtime."
+}

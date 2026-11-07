@@ -2,6 +2,7 @@
 import argparse
 import contextlib
 import io
+from importlib.metadata import version
 import json
 from pathlib import Path
 import platform
@@ -55,7 +56,7 @@ def main(argv=None):
         approximate=sum(e['status']=='Approximate' for e in items),
         reference_only=sum(e['status']=='Reference Only' for e in items),
         fonts_licensed=len(coverage()),pdf_extraction=extraction,
-        python=platform.python_version(),pango=backend().pango_version().decode(),
+        python=platform.python_version(),pypdf=version('pypdf'),pango=backend().pango_version().decode(),
         cairo=backend().cairo_version().decode(),
         release_ready=False,
         blockers=['Reader-independent exact Arabic PDF extraction is not established.',

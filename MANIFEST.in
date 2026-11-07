@@ -1,0 +1,10 @@
+include SKILL.md capabilities.json FONT_LICENSES.md ACCURACY.md README.ar.md AGENTS.md requirements-dev.txt
+include LICENSE CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md RELEASE.md GITHUB_SETUP.md ENGINEERING_REPORT.md
+recursive-include references *.md
+recursive-include docs *.md *.json
+recursive-include scripts *.py
+recursive-include tests *.py *.json *.png
+recursive-include examples *.md *.png *.svg *.pdf
+recursive-include marketing *.md
+recursive-include src/arabic_calligraphy/data *
+recursive-include .github *.md *.yml

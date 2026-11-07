@@ -16,7 +16,7 @@ jobs:
       - name: Validate tag syntax
         env:
           RELEASE_TAG: ${{ inputs.tag }}
-        run: python -c 'import os,re; assert re.fullmatch(r"v[0-9]+\.[0-9]+\.[0-9]+(?:rc[0-9]+)?",os.environ["RELEASE_TAG"])'
+        run: python -c 'import os,re; assert re.fullmatch(r"v[0-9]+\.[0-9]+\.[0-9]+(?:-rc\.[0-9]+)?",os.environ["RELEASE_TAG"])'
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ inputs.tag }}

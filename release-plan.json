@@ -1,22 +1,29 @@
 {
-  "tag": "v0.1.0-rc.1",
-  "python_version": "0.1.0rc1",
+  "tag": "v0.1.0-rc.2",
+  "python_version": "0.1.0rc2",
   "channel": "experimental-prerelease",
   "publication_authorized": true,
-  "authorization_scope": "First private GitHub release candidate requested by the repository owner in this session; no stable release or visibility change authorized.",
+  "authorization_scope": "Repository owner requested Diwani implementation and a new release candidate in this session. RC2 publication is authorized; no stable release or future candidate is approved.",
   "supported_styles": [
     "naskh",
     "kufic",
-    "nastaliq"
+    "nastaliq",
+    "diwani"
   ],
   "known_issues": [
     {
       "id": "PDF-001",
       "summary": "Arabic PDF raw extraction/search/copy behavior is reader-dependent and is not lossless.",
-      "accepted_for_rc1_testing": true,
-      "blocks_stable": true
+      "blocks_stable": true,
+      "accepted_for_testing": true
+    },
+    {
+      "id": "DIWANI-001",
+      "summary": "Unvocalized PNG/outlined SVG only; PDF and combining marks are refused because the original font has fsType=2 and no GPOS. No Jali or logo composition engine.",
+      "accepted_for_testing": true,
+      "blocks_stable_diwani_full_support": true
     }
   ],
-  "next_candidate": "v0.1.0-rc.2",
+  "next_candidate": "v0.1.0-rc.3",
   "next_candidate_plan": "docs/next-candidate.md"
 }

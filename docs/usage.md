@@ -1,6 +1,6 @@
 # CLI and Python API
 
-`render` requires `--text` and `--output`. Options: `--style naskh|kufic|nastaliq`, `--size WIDTHxHEIGHT` (default 1080x1080), `--font-size` (96), `--margin` (80), `--align right|center|left`, `--foreground` and `--background`. Colors accept #RRGGBB, #RRGGBBAA or transparent. PNG dimensions are pixels; SVG uses user units; PDF uses points (72 per inch). Larger PNG dimensions with proportional font/margin sizing provide higher pixel resolution; no misleading DPI-only option is offered.
+`render` requires `--text` and `--output`. Options: `--style naskh|kufic|nastaliq|diwani`, `--size WIDTHxHEIGHT` (default 1080x1080), `--font-size` (96), `--margin` (80), `--align right|center|left`, `--foreground` and `--background`. Colors accept #RRGGBB, #RRGGBBAA or transparent. PNG dimensions are pixels; SVG uses user units; PDF uses points (72 per inch). Larger PNG dimensions with proportional font/margin sizing provide higher pixel resolution; no misleading DPI-only option is offered.
 
 `poster` shares those options except alignment, and adds `--subtitle`; its default canvas is 1080x1350. For an Instagram square use 1080x1080; for a story use 1080x1920. Review composition for each aspect ratio. `certificate` accepts `--recipient`, `--body`, optional `--title`, `--signature`, and `--output`; canvas is landscape 1190x842. Long entries that do not fit fail rather than being clipped.
 
@@ -20,3 +20,7 @@ document("# عنوان\nنص التقرير", "report.pdf", font_size=18, margin
 Functions return a pathlib.Path. Invalid text, absent coverage, unsupported styles, invalid dimensions and overflow raise ValueError. Native export failures raise RuntimeError. The CLI reports these on stderr and returns 2. Output parents must exist. Writes use a sibling temporary file followed by atomic replacement; failures preserve an existing output. An explicit existing output path is replaced on success. Symlink outputs are refused. Callers choose paths deliberately; do not derive output paths directly from untrusted document titles.
 
 SVG is outlined artwork with original text in a description, not editable live text. PDFs embed font subsets and include logical ActualText mappings; generic extractors may still reorder characters. Retain the structured source for text fidelity.
+
+## Diwani in RC2
+
+`render --style diwani` and `poster --style diwani` support PNG and outlined SVG for unvocalized text. Combining marks/harakat and PDF are refused with an explicit error; choose Naskh when those are required. `document --body-style diwani` is unsupported. The font's original fsType=2 is respected and its missing GPOS is not hidden. Font-based Diwani does not implement Diwani Jali or custom logo composition. See references/styles/diwani.md and the actual gallery files.

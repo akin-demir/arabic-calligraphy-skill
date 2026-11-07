@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0rc2 — Diwani experimental candidate
+
+- Add unchanged OFL Layla Diwani 2.0 with full notices, hash and pinned provenance.
+- Implement unvocalized Diwani PNG/outlined SVG lettering and posters; explicitly refuse PDF and combining marks.
+- Expand to 470 tests and actual Diwani gallery/visual references.
+- Add a ready-to-upload skill ZIP as a checksummed release asset.
+- Clarify modern Kufi versus Square Kufic and prohibit renderer substitution by agents.
+- Keep PDF-001 unresolved and stable publication gated; carry remaining work into the RC3 plan.
+
 ## 0.1.0rc1 — first experimental candidate
 
 - Portable Agent Skill and 20 introductory tradition references.

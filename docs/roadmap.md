@@ -1,6 +1,6 @@
 # Roadmap
 
-The first experimental candidate is v0.1.0-rc.1. See [RC1 notes](releases/v0.1.0-rc.1.md) and the prioritized [RC2 plan](next-candidate.md), including acceptance criteria for PDF correctness, user feedback and installation.
+The current experimental candidate is v0.1.0-rc.2, adding limited Diwani typography. See [RC2 notes](releases/v0.1.0-rc.2.md) and the prioritized [RC3 plan](next-candidate.md), including acceptance criteria for PDF correctness, user feedback and installation.
 
 0.1 candidate: three honest font-based styles, 20 introductory references, CLI/API, PNG/SVG/PDF, measured layouts, tests and real examples. Before release: resolve exact PDF extraction, validate remote CI/security and clean installation, test Skills CLI discovery, verify repository protections, and obtain maintainer approval.
 

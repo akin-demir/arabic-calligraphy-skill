@@ -1,0 +1,47 @@
+{
+  "tests_run": 470,
+  "passed": 470,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "documented": 20,
+  "implemented": 4,
+  "technically_verified": 4,
+  "expert_reviewed": 0,
+  "approximate": 4,
+  "reference_only": 16,
+  "fonts_licensed": 5,
+  "pdf_extraction": [
+    {
+      "input": "العلم نور",
+      "pypdf_extracted": "ملعلا  رون ",
+      "exact_extraction": false,
+      "exact_actual_text_mapping": true
+    },
+    {
+      "input": "بِسْمِ الله",
+      "pypdf_extracted": "ِمْسِب  للها ",
+      "exact_extraction": false,
+      "exact_actual_text_mapping": true
+    },
+    {
+      "input": "العربية — Arabic 123",
+      "pypdf_extracted": "Arabic 123—  ةيبرعلا  ",
+      "exact_extraction": false,
+      "exact_actual_text_mapping": true
+    }
+  ],
+  "python": "3.12.14",
+  "pypdf": "6.10.0",
+  "pango": "1.56.3",
+  "cairo": "1.18.4",
+  "release_ready": false,
+  "blockers": [
+    "Reader-independent exact Arabic PDF extraction is not established.",
+    "Remote CI and security audit must pass before release.",
+    "Maintainer publication approval is required."
+  ],
+  "candidate_ready": true,
+  "candidate_tag": "v0.1.0-rc.2",
+  "pdf_limitation_accepted_for_testing": true
+}

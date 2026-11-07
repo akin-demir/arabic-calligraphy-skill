@@ -1,6 +1,6 @@
-# Plan for v0.1.0-rc.4
+# Plan for v0.1.0-rc.5
 
-RC3 adds manual Square Kufic grid studies with source mapping; four font workflows remain. The README redesign and Thuluth experiment remain separate open PRs. RC4 should prioritize correctness, installation and feedback before expanding style coverage further. This plan is ordered by priority; it is not a promise that all twenty traditions will be implemented next.
+RC3 adds manual Square Kufic grid studies with source mapping; four font workflows remain. RC4 includes the Square Kufic README motif and editable source. The Thuluth trial was closed after negative visual feedback and excluded from RC4. Dependency updates were consolidated and their original PRs closed. RC5 should prioritize correctness, installation and feedback before expanding style coverage further. This plan is ordered by priority; it is not a promise that all twenty traditions will be implemented next.
 
 | Priority | Work | Acceptance evidence |
 |---|---|---|
@@ -15,15 +15,15 @@ RC3 adds manual Square Kufic grid studies with source mapping; four font workflo
 | P2 | Strengthen visual/layout review | Check long subtitles/names, dense harakat, Nastaliq collisions and different aspect ratios; record qualified review separately from software checks |
 | P2 | Improve historical references | Replace provisional notes with school-specific scholarship; no numerical proportions without evidence |
 
-## RC4 exit criteria
+## RC5 exit criteria
 
 - Required automated tests and dependency audit pass on the exact tagged commit.
 - PDF-001 is fixed for a documented reader matrix, or remains prominently experimental with a precise evidence-backed limitation. A stable release still requires the PDF correctness gate to pass.
 - RC2/RC3 feedback has a disposition: fixed, reproduced with a planned fix, or explicitly unsupported.
 - Source, wheel, examples, accuracy report and SHA-256 checksums correspond to the same commit.
 - Release notes distinguish implemented typography, reference-only traditions, technical validation and expert authenticity review.
-- Repository owner explicitly approves RC4 publication; RC3 authorization does not authorize future releases.
+- Repository owner explicitly approves RC5 publication; RC4 authorization does not authorize future releases.
 
-## Deferred beyond RC4
+## Deferred beyond RC5
 
 Aref Ruqaa integration, automatic Square Kufic text composition (RC3 includes the manual study exporter), additional traditions and independent calligraphy certification remain separate projects. They must not distract from text correctness and installation reliability.

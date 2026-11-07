@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0rc4 — Square Kufic README candidate
+
+- Finalize outstanding PRs: consolidate seven dependency updates, close the rejected Thuluth trial without shipping its font, and record branch dispositions.
+
+- Add a teal-and-gold README banner made from four rotated Allah grid studies.
+- Include the exact editable cell map and a reproducible PNG/SVG generator in the gallery workflow.
+- Replace the superseded Diwani README proposal; remove completed branches while preserving active work.
+- Document the unprotected-main status and ready-to-apply protection policy. Protection still needs administrator access and an eligible GitHub plan or public repository.
+- Preserve four font workflows and all existing PDF, Diwani and manual-grid limitations; 482 checks pass.
+- Publish exact-commit source, wheel, skill ZIP, editable examples, evidence and checksums; plan follow-up work for RC5.
+
 ## 0.1.0rc3 — manual Square Kufic candidate
 
 - Add manual labeled-cell grid inspection and PNG/SVG export with exact source-span metadata.
@@ -27,4 +38,4 @@
 - 365 local tests, real gallery and accuracy reports.
 - Known blocker: exact Arabic text extraction is not consistent across PDF readers.
 
-Pre-1.0 API changes may occur in minor releases; patch releases preserve documented behavior where feasible. The current GitHub prerelease tag is v0.1.0-rc.3; stable release remains blocked. See the RC3 notes and RC4 plan.
+Pre-1.0 API changes may occur in minor releases; patch releases preserve documented behavior where feasible. The current GitHub prerelease tag is v0.1.0-rc.4; stable release remains blocked. See the RC4 notes and RC5 plan.

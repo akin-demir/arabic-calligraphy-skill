@@ -1,9 +1,9 @@
 {
-  "tag": "v0.1.0-rc.3",
-  "python_version": "0.1.0rc3",
+  "tag": "v0.1.0-rc.4",
+  "python_version": "0.1.0rc4",
   "channel": "experimental-prerelease",
   "publication_authorized": true,
-  "authorization_scope": "Owner explicitly requested merge to main, a release candidate, and cleanup of inactive branches on 2026-11-07. Authorizes RC3 prerelease publication only; no stable or future release.",
+  "authorization_scope": "Owner explicitly requested merge and release candidate (merge and rc) on 2026-11-07. Authorizes RC4 prerelease publication only; no stable or future release.",
   "supported_styles": [
     "naskh",
     "kufic",
@@ -29,6 +29,6 @@
       "accepted_for_testing": true
     }
   ],
-  "next_candidate": "v0.1.0-rc.4",
+  "next_candidate": "v0.1.0-rc.5",
   "next_candidate_plan": "docs/next-candidate.md"
 }

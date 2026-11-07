@@ -1,0 +1,50 @@
+[
+  {
+    "number": 11,
+    "branch": "feat/thuluth",
+    "sha": "1d1ade90df703cb2511a75138843ee9346a64a29",
+    "resolution": "Closed: Thuluth trial rejected after visual feedback; excluded from RC4."
+  },
+  {
+    "number": 8,
+    "branch": "dependabot/pip/fonttools-4.68.0",
+    "sha": "591c17f995f7caaf281e242d83fb5e910c87f00d",
+    "resolution": "Closed: requested version update consolidated into RC4 and validated there."
+  },
+  {
+    "number": 7,
+    "branch": "dependabot/pip/build-1.6.1",
+    "sha": "88fa41a0c9645250e57966e4bbc6919c4c3cd2ae",
+    "resolution": "Closed: requested version update consolidated into RC4 and validated there."
+  },
+  {
+    "number": 6,
+    "branch": "dependabot/pip/pip-audit-2.10.1",
+    "sha": "c52709c3f80ad442ae3ca5907b6edb116b7cf0d0",
+    "resolution": "Closed: requested version update consolidated into RC4 and validated there."
+  },
+  {
+    "number": 5,
+    "branch": "dependabot/github_actions/actions/setup-python-7.1.0",
+    "sha": "47d471913df670c903c1cc2eb7595b231fb38b69",
+    "resolution": "Closed: requested version update consolidated into RC4 and validated there."
+  },
+  {
+    "number": 4,
+    "branch": "dependabot/github_actions/actions/download-artifact-8.0.2",
+    "sha": "24abcab07305efebeeaa1bded87eb29c0d82b8c2",
+    "resolution": "Closed: requested version update consolidated into RC4 and validated there."
+  },
+  {
+    "number": 3,
+    "branch": "dependabot/github_actions/actions/upload-artifact-7.0.2",
+    "sha": "95debe1141b6c83ad5984d7b64da81c67e776912",
+    "resolution": "Closed: requested version update consolidated into RC4 and validated there."
+  },
+  {
+    "number": 2,
+    "branch": "dependabot/github_actions/actions/checkout-7.0.1",
+    "sha": "00569f6d4ffe628db5a04110205153b7cdbfa470",
+    "resolution": "Closed: requested version update consolidated into RC4 and validated there."
+  }
+]

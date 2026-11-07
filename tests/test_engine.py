@@ -28,15 +28,15 @@ class Artifacts(unittest.TestCase):
 
     def test_registry(self):
         self.assertEqual(len(styles()), 20)
-        self.assertEqual(sum(s['implemented'] for s in styles()), 4)
+        self.assertEqual(sum(s['implemented'] for s in styles()), 5)
         self.assertFalse(any(s['expert_authenticity_reviewed'] for s in styles()))
         self.assertEqual(json.loads((ROOT/'capabilities.json').read_text())['styles'], styles())
 
     def test_font_licenses_hashes_and_coverage(self):
-        self.assertEqual(len(coverage()), 5)
+        self.assertEqual(len(coverage()), 6)
         for record in manifest():
             self.assertEqual(record['license'], 'OFL-1.1')
-            self.assertEqual(record['fs_type'], 2 if record['family'] == 'LaylaDiwani' else 0)
+            self.assertEqual(record['fs_type'], {'LaylaDiwani': 2, 'LaylaThuluth': 8}.get(record['family'], 0))
             self.assertEqual(record['embedding_permission'], record['family'] != 'LaylaDiwani')
 
     def test_reference_only_fails(self):
@@ -194,6 +194,64 @@ class Artifacts(unittest.TestCase):
             delta=ImageStat.Stat(ImageChops.difference(a.crop(box),b.crop(box)))
             self.assertLess(sum(delta.mean)/3,10)
 
+    def test_thuluth_exports_exact_svg(self):
+        for ext in ['png','svg','pdf']:
+            p=self.root/f'thuluth.{ext}'
+            render('العلم نور',p,style='thuluth',width=1000,height=450,font_size=100)
+            self.assertGreater(p.stat().st_size,100)
+        root=ET.parse(self.root/'thuluth.svg').getroot()
+        self.assertEqual(root.find('{http://www.w3.org/2000/svg}desc').text,'العلم نور')
+        self.assertFalse(root.findall('.//{http://www.w3.org/2000/svg}text'))
+
+    def test_thuluth_pdf_embeds_selected_font(self):
+        p=self.root/'thuluth.pdf';text='الجزيرة'
+        render(text,p,style='thuluth',width=900,height=450,font_size=100)
+        page=PdfReader(p).pages[0]
+        fonts=page['/Resources']['/Font']
+        self.assertTrue(fonts)
+        for font in fonts.values():
+            f=font.get_object()
+            self.assertIn('LaylaThuluth',str(f['/BaseFont']))
+            descriptor=f.get('/FontDescriptor')
+            if descriptor is None:
+                descriptor=f['/DescendantFonts'][0].get_object()['/FontDescriptor']
+            self.assertIn('/FontFile2',descriptor.get_object())
+        self.assertIn((b'\xfe\xff'+text.encode('utf-16-be')).hex().encode(),
+                      page.get_contents().get_data())
+
+    def test_thuluth_marks_refused_atomically(self):
+        p=self.root/'marked.svg';p.write_text('original')
+        for text in ['بَ','بّ','مُحَمَّد','ب\u0653']:
+            with self.subTest(text=text), self.assertRaisesRegex(ValueError,'combining marks'):
+                render(text,p,style='thuluth')
+        self.assertEqual(p.read_text(),'original')
+
+    def test_thuluth_missing_coverage_refused(self):
+        with self.assertRaisesRegex(ValueError,'lacks coverage'):
+            render('العربية \u08b0',self.root/'missing.svg',style='thuluth')
+
+    def test_thuluth_poster_exports(self):
+        for ext in ['png','svg','pdf']:
+            p=self.root/f'poster.{ext}'
+            poster('الخط العربي',p,style='thuluth',subtitle='جمال الحرف والمعنى')
+            self.assertGreater(p.stat().st_size,100)
+
+    def test_thuluth_cli(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            code=main(['render','--text','الجزيرة','--style','thuluth',
+                       '--output',str(self.root/'cli.svg')])
+        self.assertEqual(code,0)
+
+    def test_thuluth_visual_regression(self):
+        p=self.root/'thuluth.png'
+        render('العلم نور',p,style='thuluth',width=640,height=360,font_size=70,
+               margin=30,background='#FFFFFF',align='center')
+        with Image.open(p) as current, Image.open(ROOT/'tests/visual/thuluth.png') as ref:
+            a,b=current.convert('RGB'),ref.convert('RGB')
+            box=ImageChops.difference(b,Image.new('RGB',b.size,'white')).getbbox()
+            delta=ImageStat.Stat(ImageChops.difference(a.crop(box),b.crop(box)))
+            self.assertLess(sum(delta.mean)/3,10)
+
     def test_cli_success(self):
         with contextlib.redirect_stdout(io.StringIO()):
             code=main(['render','--text','العلم نور','--size','640x360','--font-size','48',
@@ -265,3 +323,9 @@ import unicodedata
 for index,text in enumerate(CORPUS):
     if not any(unicodedata.category(c) in ('Mn','Me') for c in text):
         setattr(Artifacts,f'test_diwani_unicode_{index:03d}',unicode_test(text,'diwani'))
+
+# The Thuluth font has no GPOS: exact-source integration checks cover all 89
+# unmarked corpus inputs; explicit tests above cover refusal of vocalization.
+for index,text in enumerate(CORPUS):
+    if not any(unicodedata.category(c) in ('Mn','Me') for c in text):
+        setattr(Artifacts,f'test_thuluth_unicode_{index:03d}',unicode_test(text,'thuluth'))

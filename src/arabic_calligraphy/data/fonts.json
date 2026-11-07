@@ -109,5 +109,34 @@
     "distribution": "Layla 2.0, ALT Linux 2.0-alt1_2 mirror",
     "mirror": "https://github.com/NazirNayal8/nazirnayal.github.io/blob/d00ad06f30de6557a61bfe1e9bcdd4873eb4f7c7/assets/fonts/layla/LaylaDiwani.ttf",
     "limitations": "Original fsType=2 retained: PDF embedding refused. No GPOS: combining marks refused. Font-based approximate Diwani, not composed/Jali calligraphy."
+  },
+  {
+    "file": "LaylaThuluth.ttf",
+    "family": "LaylaThuluth",
+    "style": "Regular",
+    "display_style": "Thuluth",
+    "version": "Version 2.0",
+    "copyright": "Copyright 2014, 2015, 2016, 2017, Mohammed Isam.\r\nLatin Glyphs and Numbers are taken from the font Urdu Khush Khati, version 1.5, Created by Basharat Ali at lfcsopensource with FontForge 2.0 (http://fontforge.sf.net). This font is released under SIL Open Font License.",
+    "license": "OFL-1.1",
+    "license_embedding_permission": true,
+    "embedding_permission": true,
+    "redistribution_permission": true,
+    "fs_type": 8,
+    "sha256": "31d204337e70699a9a8c1461d737bd5f3cd1c283dad8970915222bac9c9bc74d",
+    "unicode_count": 456,
+    "opentype": [
+      "GSUB"
+    ],
+    "export_formats": [
+      "png",
+      "svg",
+      "pdf"
+    ],
+    "positioning": "legacy-no-gpos",
+    "source": "https://fontlibrary.org/en/font/layla-thuluth",
+    "maintainer": "Mohammed Isam",
+    "distribution": "Layla 2.0, ALT Linux 2.0-alt1_2 mirror",
+    "mirror": "https://github.com/NazirNayal8/nazirnayal.github.io/blob/d00ad06f30de6557a61bfe1e9bcdd4873eb4f7c7/assets/fonts/layla/LaylaThuluth.ttf",
+    "limitations": "Unvocalized font-based Thuluth approximation. Original fsType=8 permits editable embedding; no GPOS, so combining marks are refused. Not a historical or custom stacked composition."
   }
 ]

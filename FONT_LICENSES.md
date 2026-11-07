@@ -21,3 +21,11 @@ The original font's fsType=2 conflicts with general OFL embedding permission. We
 - **Noto Nastaliq Urdu Regular**: Version 2.000; ttfautohint (v1.8.3) -l 8 -r 50 -G 200 -x 14 -D arab -f none -a qsq -X ""; fsType 0; SHA-256 `fe24c4a05b19482beac11e4b90a0f6754214f1cb5e925cf9e86b48283ac37522`.
 - **Noto Sans Regular**: Version 2.004; ttfautohint (v1.8.3) -l 8 -r 50 -G 200 -x 14 -D latn -f none -a qsq -X ""; fsType 0; SHA-256 `89c3c497f618fdaa0b2d1e98fef93582f28c71debd2c4a8cdf41f190ced2909d`.
 - **LaylaDiwani Regular**: Version 2.0; fsType 2; SHA-256 `089116f093e8e79ffd76f53c89dee1b4040d15d5568e1ecbafc937f8acb9b27b`.
+
+## Layla Thuluth — unreleased addition
+
+LaylaThuluth Regular 2.0, by Mohammed Isam, is bundled unchanged under the same Layla OFL license. Shared Layla-OFL.txt, Layla-Authors, Layla-FONTLOG.txt and Layla-SOURCE.md already name this font. Copyright 2014–2017 and the Urdu Khush Khati/Basharat Ali Latin glyph credit remain intact. The pinned mirror is the same commit documented above, assets/fonts/layla/LaylaThuluth.ttf. The internal full license matches the accompanying OFL notice.
+
+The original fsType is **8 (editable embedding permitted)**, rather than Diwani's restricted value 2. PNG, outlined SVG and embedded-font PDF are enabled for Thuluth. Its GSUB table supports contextual shaping, but no GPOS is present; combining marks/harakat are refused. This does not loosen Diwani's PDF restriction or make any historical authenticity claim.
+
+Exact record: LaylaThuluth Regular, Version 2.0; fsType 8; SHA-256 `31d204337e70699a9a8c1461d737bd5f3cd1c283dad8970915222bac9c9bc74d`.

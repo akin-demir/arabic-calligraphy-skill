@@ -30,8 +30,10 @@ def coverage():
             if font["OS/2"].fsType != record["fs_type"] or record["license"] != "OFL-1.1":
                 raise ValueError(f"Unverified embedding license: {path.name}")
             if record["fs_type"] != 0 and not (
-                record["fs_type"] == 2 and record.get("embedding_permission") is False
-                and record.get("export_formats") == ["png", "svg"]
+                (record["fs_type"] == 2 and record.get("embedding_permission") is False
+                 and record.get("export_formats") == ["png", "svg"])
+                or (record["fs_type"] == 8 and record.get("embedding_permission") is True
+                    and record.get("export_formats") == ["png", "svg", "pdf"])
             ):
                 raise ValueError(f"Unsupported font embedding policy: {path.name}")
             required = ("GSUB",) if record.get("positioning") == "legacy-no-gpos" else ("GSUB", "GPOS")
@@ -42,8 +44,12 @@ def coverage():
 
 
 def validate_coverage(text, family):
-    if family == "LaylaDiwani" and any(unicodedata.category(c) in ("Mn", "Me") for c in text):
-        raise ValueError("Diwani combining marks/harakat are not supported by this font's positioning; use unvocalized text or Naskh")
+    record = next(item for item in manifest() if item["family"] == family)
+    if record.get("positioning") == "legacy-no-gpos" and any(
+        unicodedata.category(c) in ("Mn", "Me") for c in text
+    ):
+        label = record.get("display_style", family)
+        raise ValueError(f"{label} combining marks/harakat are not supported by this font's positioning; use unvocalized text or Naskh")
     primary = coverage()[family]
     latin = coverage()["Noto Sans"]
     missing = set()

@@ -14,16 +14,26 @@
       "characteristics": "Tall uprights, broad curves and deliberate overlaps.",
       "use_cases": "Short ceremonial headings",
       "readability": "Overlapping words may obscure reading order.",
-      "font_family": null,
-      "status": "Reference Only",
-      "implemented": false,
-      "technical_verified": false,
+      "font_family": "LaylaThuluth",
+      "status": "Approximate",
+      "implemented": true,
+      "technical_verified": true,
       "expert_authenticity_reviewed": false,
       "review_evidence": null,
       "research_status": "introductory",
       "sources": [
-        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
-      ]
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/",
+        "https://fontlibrary.org/en/font/layla-thuluth",
+        "https://fedoraproject.org/wiki/I18N/Fonts/Audit"
+      ],
+      "export_formats": [
+        "png",
+        "svg",
+        "pdf"
+      ],
+      "combining_marks": false,
+      "verification_scope": "Unvocalized font-based display typography. PNG, outlined SVG and embedded-font PDF. Combining marks refused; no historical-composition or expert authenticity verification.",
+      "limitations": "Unvocalized font-based Thuluth approximation. Original fsType=8 permits editable embedding; no GPOS, so combining marks are refused. Not a historical or custom stacked composition."
     },
     {
       "id": "naskh",

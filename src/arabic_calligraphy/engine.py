@@ -29,7 +29,7 @@ def family_for(style):
     for entry in styles():
         if entry["id"] == style:
             if not entry["implemented"]:
-                raise ValueError(f"Style '{style}' is Reference Only; choose naskh, kufic, nastaliq or diwani")
+                raise ValueError(f"Style '{style}' is Reference Only; choose naskh, kufic, nastaliq, diwani or thuluth")
             return entry["font_family"]
     raise ValueError(f"Unknown style: {style}")
 

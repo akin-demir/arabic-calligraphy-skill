@@ -4,7 +4,11 @@
 
 [English](README.md) · [التثبيت](docs/installation.md) · [نتائج الدقة](ACCURACY.md)
 
-![ملصق مولّد فعلياً](examples/gallery/poster.png)
+[![فن الخط العربي — عنوان بخط ليلى ديواني مولّد بمحرك المشروع](examples/gallery/readme-hero.png)](examples/gallery/readme-hero.svg)
+
+[تنزيل المهارة — RC2](https://github.com/akin-demir/arabic-calligraphy-skill/releases/download/v0.1.0-rc.2/arabic-calligraphy-skill-rc2.zip) · [معرض النتائج](examples/gallery) · [عرض SVG](examples/gallery/readme-hero.svg)
+
+هذا العنوان ناتج فعلي من محرك التنضيد بخط ليلى ديواني، ويمكن إعادة توليده عبر سكربت المعرض.
 
 يوفّر المشروع تنضيداً عربياً محلياً باستخدام Pango وHarfBuzz وCairo، مع تصدير PNG وSVG وPDF. يشمل الدليل عشرين تقليداً، لكن التنفيذ الحالي يدعم التنضيد بخطوط Noto للنسخ والكوفي والنستعليق، ويضيف المرشح الثاني خط ليلى ديواني للنص غير المشكول بصيغتي PNG وSVG فقط. لا تعني هذه النتائج اعتماداً فنياً من خطاط متخصص.
 

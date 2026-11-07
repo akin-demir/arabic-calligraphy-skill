@@ -1,6 +1,6 @@
 # GitHub setup and main protection
 
-Checked on 2026-11-07: the repository is private, RC3 is published, and `main`
+Checked on 2026-11-07: the repository is private, RC4 is the current authorized candidate, and `main`
 is **not protected**. The rulesets API returned HTTP 403 with:
 
 > Upgrade to GitHub Pro or make this repository public to enable this feature.
@@ -37,10 +37,13 @@ restriction list. Do not claim owner-only merging until access is verified.
 ## Current workflow
 
 Main is the trunk. Short-lived feature PRs run quality/security checks before
-merging. RC3 was built from its exact main commit with checksummed source, wheel,
+merging. The release candidate is built from its exact main commit with checksummed source, wheel,
 skill ZIP, gallery and evidence. Historical release assets remain unchanged.
 Future release publication still requires explicit owner authorization.
 
 Completed branches are removed only after their work is merged or explicitly
-superseded. Open experimental Thuluth and dependency PRs are active work and are
-retained. The older Diwani README proposal is superseded by the Square Kufic hero.
+superseded. The Thuluth trial is closed after negative visual feedback; dependency updates
+are consolidated into RC4. Closed branch heads and reasons are recorded in
+[the RC4 dispositions](docs/rc4-pr-resolutions.json). Cleanup preserves any branch
+that moved or gained an open PR. The older Diwani README proposal was superseded
+by the merged Square Kufic hero.

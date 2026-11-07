@@ -1,6 +1,6 @@
 # Roadmap
 
-The current experimental candidate is v0.1.0-rc.3, adding manual Square Kufic grid studies. See [RC3 notes](releases/v0.1.0-rc.3.md) and the prioritized [RC4 plan](next-candidate.md), including acceptance criteria for PDF correctness, user feedback and installation.
+The current experimental candidate is v0.1.0-rc.4, adding reproducible Square Kufic README artwork. See [RC4 notes](releases/v0.1.0-rc.4.md) and the prioritized [RC5 plan](next-candidate.md), including acceptance criteria for PDF correctness, user feedback and installation.
 
 0.1 candidate: three honest font-based styles, 20 introductory references, CLI/API, PNG/SVG/PDF, measured layouts, tests and real examples. Before release: resolve exact PDF extraction, validate remote CI/security and clean installation, test Skills CLI discovery, verify repository protections, and obtain maintainer approval.
 

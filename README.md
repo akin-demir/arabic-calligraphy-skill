@@ -8,13 +8,13 @@ From Arabic posters to properly shaped RTL documents. Local Python software, bun
 
 [![Square Kufic motif composed from four rotated Allah grid studies](examples/gallery/readme-square-kufic.png)](examples/gallery/readme-square-kufic.svg)
 
-[Download RC3](https://github.com/akin-demir/arabic-calligraphy-skill/releases/tag/v0.1.0-rc.3) · [Editable motif](examples/square-kufic/readme-rosette.json) · [Square Kufic workflow](docs/square-kufic.md)
+[Download RC4](https://github.com/akin-demir/arabic-calligraphy-skill/releases/tag/v0.1.0-rc.4) · [Editable motif](examples/square-kufic/readme-rosette.json) · [Square Kufic workflow](docs/square-kufic.md)
 
 The motif repeats `الله` four times, rotating the physical grid clockwise. It is an original manual study with a source map, pending independent calligraphy review.
 
-> Experimental candidate **v0.1.0-rc.3** (`0.1.0rc3`). [RC3 notes](docs/releases/v0.1.0-rc.3.md) · [Plan for RC4](docs/next-candidate.md). Four font-based rendering styles, twenty introductory tradition references. No expert authenticity certification. Exact Arabic PDF extraction varies by reader and blocks a stable release; RC3 is explicitly available for testing with that limitation.
+> Experimental candidate **v0.1.0-rc.4** (`0.1.0rc4`). [RC4 notes](docs/releases/v0.1.0-rc.4.md) · [Plan for RC5](docs/next-candidate.md). Four font-based rendering styles, twenty introductory tradition references. No expert authenticity certification. Exact Arabic PDF extraction varies by reader and blocks a stable release; RC4 is explicitly available for testing with that limitation.
 
-RC3 adds a [manual Square Kufic grid study](docs/square-kufic.md), with editable letter cells and SVG/PNG export. It is not an automatic text composer; packed composition and independent review remain pending.
+RC4 adds the reproducible Square Kufic README motif to the manual grid workflow, with editable letter cells and SVG/PNG export. It is not an automatic text composer; packed composition and independent review remain pending.
 
 ## What works
 
@@ -33,7 +33,7 @@ Requires Python 3.11+ and Linux Pango/Cairo/Fontconfig. See [native setup](docs/
 ```bash
 git clone https://github.com/akin-demir/arabic-calligraphy-skill.git
 cd arabic-calligraphy-skill
-git switch --detach v0.1.0-rc.3
+git switch --detach v0.1.0-rc.4
 python -m venv .venv
 . .venv/bin/activate
 python -m pip install .

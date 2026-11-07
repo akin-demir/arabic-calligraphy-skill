@@ -1,0 +1,86 @@
+[
+  {
+    "file": "NotoNaskhArabic-Regular.ttf",
+    "family": "Noto Naskh Arabic",
+    "style": "Regular",
+    "version": "2.004; ttfautohint (v1.8.3) -l 8 -r 50 -G 200 -x 14 -D arab -f none -a qsq -X \"\"",
+    "copyright": "Copyright 2019-2020 Google LLC. All Rights Reserved.",
+    "license": "OFL-1.1",
+    "embedding_permission": true,
+    "redistribution_permission": true,
+    "fs_type": 0,
+    "sha256": "8c67eaa2f0086872628fc3f7f760386f83c8be5c5e9a1ba3a38891237b2ac7cb",
+    "unicode_count": 1122,
+    "opentype": [
+      "GSUB",
+      "GPOS",
+      "GDEF"
+    ],
+    "source": "https://github.com/notofonts/noto-fonts",
+    "distribution": "Debian fonts-noto-core 20201225-2",
+    "maintainer": "Noto project / Google"
+  },
+  {
+    "file": "NotoKufiArabic-Regular.ttf",
+    "family": "Noto Kufi Arabic",
+    "style": "Regular",
+    "version": "Version 2.102; ttfautohint (v1.8.3) -l 8 -r 50 -G 200 -x 14 -D arab -f none -a qsq -X \"\"",
+    "copyright": "Copyright 2019 Google LLC. All Rights Reserved.",
+    "license": "OFL-1.1",
+    "embedding_permission": true,
+    "redistribution_permission": true,
+    "fs_type": 0,
+    "sha256": "befb9d07506942ba2a7e0e85c65a24a76792c937d812bc80f1095d0f660cf330",
+    "unicode_count": 301,
+    "opentype": [
+      "GSUB",
+      "GPOS",
+      "GDEF"
+    ],
+    "source": "https://github.com/notofonts/noto-fonts",
+    "distribution": "Debian fonts-noto-core 20201225-2",
+    "maintainer": "Noto project / Google"
+  },
+  {
+    "file": "NotoNastaliqUrdu-Regular.ttf",
+    "family": "Noto Nastaliq Urdu",
+    "style": "Regular",
+    "version": "Version 2.000; ttfautohint (v1.8.3) -l 8 -r 50 -G 200 -x 14 -D arab -f none -a qsq -X \"\"",
+    "copyright": "Copyright 2017 Google Inc. All Rights Reserved.",
+    "license": "OFL-1.1",
+    "embedding_permission": true,
+    "redistribution_permission": true,
+    "fs_type": 0,
+    "sha256": "fe24c4a05b19482beac11e4b90a0f6754214f1cb5e925cf9e86b48283ac37522",
+    "unicode_count": 281,
+    "opentype": [
+      "GSUB",
+      "GPOS",
+      "GDEF"
+    ],
+    "source": "https://github.com/notofonts/noto-fonts",
+    "distribution": "Debian fonts-noto-core 20201225-2",
+    "maintainer": "Noto project / Google"
+  },
+  {
+    "file": "NotoSans-Regular.ttf",
+    "family": "Noto Sans",
+    "style": "Regular",
+    "version": "Version 2.004; ttfautohint (v1.8.3) -l 8 -r 50 -G 200 -x 14 -D latn -f none -a qsq -X \"\"",
+    "copyright": "Copyright 2015 Google LLC. All Rights Reserved.",
+    "license": "OFL-1.1",
+    "embedding_permission": true,
+    "redistribution_permission": true,
+    "fs_type": 0,
+    "sha256": "89c3c497f618fdaa0b2d1e98fef93582f28c71debd2c4a8cdf41f190ced2909d",
+    "unicode_count": 2840,
+    "opentype": [
+      "GSUB",
+      "GPOS",
+      "GDEF"
+    ],
+    "source": "https://github.com/notofonts/noto-fonts",
+    "distribution": "Debian fonts-noto-core 20201225-2",
+    "maintainer": "Noto project / Google"
+  }
+]

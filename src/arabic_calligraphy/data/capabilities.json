@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "documented_styles": 20,
+  "styles": [
+    {
+      "id": "thuluth",
+      "english_name": "Thuluth",
+      "arabic_name": "خط الثلث",
+      "aliases": [
+        "Sulus",
+        "Thuluth"
+      ],
+      "history": "A proportional cursive of the six pens, prominent in monumental and manuscript display.",
+      "characteristics": "Tall uprights, broad curves and deliberate overlaps.",
+      "use_cases": "Short ceremonial headings",
+      "readability": "Overlapping words may obscure reading order.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "naskh",
+      "english_name": "Naskh",
+      "arabic_name": "خط النسخ",
+      "aliases": [
+        "Nesih",
+        "Naskhi"
+      ],
+      "history": "A proportional book hand used widely in Arabic manuscript and modern text typography.",
+      "characteristics": "Rounded forms and a relatively steady baseline.",
+      "use_cases": "Body text, reports, letters",
+      "readability": "Dense marks require generous line spacing.",
+      "font_family": "Noto Naskh Arabic",
+      "status": "Approximate",
+      "implemented": true,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "ruqah",
+      "english_name": "Ruq’ah",
+      "arabic_name": "خط الرقعة",
+      "aliases": [
+        "Ruqaa",
+        "Riq’a",
+        "Rika"
+      ],
+      "history": "A compact everyday hand associated with Ottoman writing practice; distinct from classical Riqa.",
+      "characteristics": "Compressed forms and short strokes.",
+      "use_cases": "Informal headings",
+      "readability": "Handwritten simplifications cannot be inferred from Unicode alone.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://github.com/aliftype/aref-ruqaa"
+      ]
+    },
+    {
+      "id": "kufic",
+      "english_name": "Kufic",
+      "arabic_name": "الخط الكوفي",
+      "aliases": [
+        "Kufi"
+      ],
+      "history": "A broad historical family of angular scripts, not a single fixed alphabet.",
+      "characteristics": "Angular construction and strong horizontal rhythm.",
+      "use_cases": "Contemporary display and wordmarks",
+      "readability": "Modern Kufi fonts do not reproduce all early manuscript forms.",
+      "font_family": "Noto Kufi Arabic",
+      "status": "Approximate",
+      "implemented": true,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.metmuseum.org/essays/calligraphy-in-islamic-art"
+      ]
+    },
+    {
+      "id": "square-kufic",
+      "english_name": "Square Kufic",
+      "arabic_name": "الكوفي المربع",
+      "aliases": [
+        "Banna’i",
+        "geometric Kufic"
+      ],
+      "history": "A geometric tradition associated with architectural inscriptions.",
+      "characteristics": "Orthogonal strokes and modular spacing.",
+      "use_cases": "Manually designed geometric emblems",
+      "readability": "A grid can conceal spelling and letter distinctions.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.metmuseum.org/essays/calligraphy-in-islamic-art"
+      ]
+    },
+    {
+      "id": "eastern-kufic",
+      "english_name": "Eastern Kufic",
+      "arabic_name": "الكوفي المشرقي",
+      "aliases": [
+        "New Style",
+        "Eastern Kufi"
+      ],
+      "history": "A label for angular manuscript hands associated with eastern Islamic regions.",
+      "characteristics": "Contrasting tall ascenders and angular or tapered shapes.",
+      "use_cases": "Historical studies",
+      "readability": "The label encompasses substantial variation.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.metmuseum.org/essays/calligraphy-in-islamic-art"
+      ]
+    },
+    {
+      "id": "diwani",
+      "english_name": "Diwani",
+      "arabic_name": "الخط الديواني",
+      "aliases": [
+        "Divani"
+      ],
+      "history": "An Ottoman chancery writing tradition.",
+      "characteristics": "Rounded sweeping forms and compact connections.",
+      "use_cases": "Formal display under expert supervision",
+      "readability": "Compact joins can reduce readability.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "diwani-jali",
+      "english_name": "Diwani Jali",
+      "arabic_name": "الديواني الجلي",
+      "aliases": [
+        "Jali Diwani",
+        "Celi Divani"
+      ],
+      "history": "An elaborate display development of Diwani.",
+      "characteristics": "Dense interweaving and ornamental marks.",
+      "use_cases": "Ceremonial compositions",
+      "readability": "Ornamental filling is not extra linguistic text.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "provisional",
+      "sources": [
+        "https://guides.loc.gov/ottoman-turkish/calligraphy"
+      ]
+    },
+    {
+      "id": "nastaliq",
+      "english_name": "Nastaliq",
+      "arabic_name": "خط النستعليق",
+      "aliases": [
+        "Nasta’liq",
+        "Nastaleeq",
+        "Persian"
+      ],
+      "history": "A Persianate tradition especially associated with poetry and later Urdu typography.",
+      "characteristics": "Suspended diagonal groups and descending words.",
+      "use_cases": "Poetry and short display",
+      "readability": "Deep descenders need extra vertical room.",
+      "font_family": "Noto Nastaliq Urdu",
+      "status": "Approximate",
+      "implemented": true,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "shikasteh",
+      "english_name": "Shikasteh",
+      "arabic_name": "خط الشكسته",
+      "aliases": [
+        "Shekasteh",
+        "Shikasta"
+      ],
+      "history": "A broken cursive family, often referring to Shikasteh Nastaliq; distinguish Shikasteh Taliq.",
+      "characteristics": "Compressed flowing groups and less familiar connections.",
+      "use_cases": "Specialist historical and artistic work",
+      "readability": "Highly cursive writing is difficult for untrained readers.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "taliq",
+      "english_name": "Ta’liq",
+      "arabic_name": "خط التعليق",
+      "aliases": [
+        "Taliq",
+        "Ta’lik"
+      ],
+      "history": "A Persian chancery tradition; Ottoman usage of talik can also refer to Nastaliq.",
+      "characteristics": "Hanging groups and fluid movement.",
+      "use_cases": "Historical chancery studies",
+      "readability": "Terminology must be tied to region and period.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "maghrebi",
+      "english_name": "Maghrebi",
+      "arabic_name": "الخط المغربي",
+      "aliases": [
+        "Maghribi"
+      ],
+      "history": "A regional family of western Islamic manuscript hands.",
+      "characteristics": "Broad rounded bowls and regionally distinctive letter details.",
+      "use_cases": "North African manuscript study",
+      "readability": "Dot placement conventions may differ from modern eastern usage.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.metmuseum.org/essays/calligraphy-in-islamic-art"
+      ]
+    },
+    {
+      "id": "andalusian",
+      "english_name": "Andalusian",
+      "arabic_name": "الخط الأندلسي",
+      "aliases": [
+        "Andalusi"
+      ],
+      "history": "A regional tradition related to the broader Maghrebi family.",
+      "characteristics": "Rounded forms with local manuscript variation.",
+      "use_cases": "Andalusi historical references",
+      "readability": "Avoid treating it as one universal modern font style.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "provisional",
+      "sources": [
+        "https://www.metmuseum.org/essays/calligraphy-in-islamic-art"
+      ]
+    },
+    {
+      "id": "muhaqqaq",
+      "english_name": "Muhaqqaq",
+      "arabic_name": "خط المحقق",
+      "aliases": [
+        "Muhakkak"
+      ],
+      "history": "One of the six proportional pens used in formal manuscript production.",
+      "characteristics": "Expansive letters with assertive uprights and extended strokes.",
+      "use_cases": "Large manuscript-inspired display",
+      "readability": "Needs generous horizontal space.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "rayhani",
+      "english_name": "Rayhani",
+      "arabic_name": "خط الريحاني",
+      "aliases": [
+        "Rihani",
+        "Reyhani"
+      ],
+      "history": "A smaller, delicate hand related to Muhaqqaq within the six pens.",
+      "characteristics": "Fine treatment and measured forms.",
+      "use_cases": "Manuscript study",
+      "readability": "Scaling down a Muhaqqaq font does not establish Rayhani.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "tawqi",
+      "english_name": "Tawqi’",
+      "arabic_name": "خط التوقيع",
+      "aliases": [
+        "Tawqi",
+        "Tevki"
+      ],
+      "history": "A proportional hand in the six pens with documentary associations.",
+      "characteristics": "Compact, rounded writing with characteristic connections.",
+      "use_cases": "Historical documentary references",
+      "readability": "Do not confuse it with a generic modern signature font.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "classical-riqa",
+      "english_name": "Classical Riqa’",
+      "arabic_name": "خط الرقاع القديم",
+      "aliases": [
+        "Riqa",
+        "Riqaa"
+      ],
+      "history": "A classical proportional hand related to Tawqi; distinct from modern Ruqah.",
+      "characteristics": "Small-scale compact forms.",
+      "use_cases": "Historical documents",
+      "readability": "Similar transliterations cause frequent misidentification.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.iranicaonline.org/articles/calligraphy/calligraphy-ii-scripts/"
+      ]
+    },
+    {
+      "id": "ijazah",
+      "english_name": "Ijazah",
+      "arabic_name": "خط الإجازة",
+      "aliases": [
+        "Icazet"
+      ],
+      "history": "A certificate-associated calligraphic tradition often discussed in relation to Naskh and Thuluth.",
+      "characteristics": "Combination of compact text and more expressive letter movement.",
+      "use_cases": "Manual calligraphic certificates",
+      "readability": "A certificate rendered in Naskh is not thereby Ijazah.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "provisional",
+      "sources": [
+        "https://guides.loc.gov/ottoman-turkish/calligraphy"
+      ]
+    },
+    {
+      "id": "sunbuli",
+      "english_name": "Sunbuli",
+      "arabic_name": "الخط السنبلي",
+      "aliases": [
+        "Sumbuli",
+        "Sünbüli"
+      ],
+      "history": "A specialized Ottoman-associated style; detailed historical attribution remains under research.",
+      "characteristics": "See the linked attributed signature specimen; no numerical model is asserted here.",
+      "use_cases": "Specialist specimen study",
+      "readability": "Evidence is limited; avoid invented rules or dates.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "provisional",
+      "sources": [
+        "https://www.islam.org.hk/calligraphy/c3/Calig11.asp"
+      ]
+    },
+    {
+      "id": "tughra",
+      "english_name": "Tughra",
+      "arabic_name": "الطغراء",
+      "aliases": [
+        "Tugra",
+        "Tuğra"
+      ],
+      "history": "An Ottoman emblem and composition tradition rather than an independent alphabet.",
+      "characteristics": "Intertwined names, vertical shafts and sweeping loops.",
+      "use_cases": "Expert-designed emblems",
+      "readability": "Emblem recognition may matter more than straightforward reading.",
+      "font_family": null,
+      "status": "Reference Only",
+      "implemented": false,
+      "technical_verified": false,
+      "expert_authenticity_reviewed": false,
+      "review_evidence": null,
+      "research_status": "introductory",
+      "sources": [
+        "https://www.metmuseum.org/art/collection/search/449533"
+      ]
+    }
+  ]
+}

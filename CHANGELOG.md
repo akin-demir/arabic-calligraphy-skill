@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — 0.1.0rc3.dev0
+
+- Add unchanged OFL LaylaThuluth 2.0, with shared notices and pinned hash/provenance.
+- Implement unvocalized Thuluth PNG, outlined SVG and embedded-font PDF; preserve editable fsType=8 and refuse unsupported combining marks.
+- Add actual Thuluth gallery samples, font-selection/embedding checks, visual fixture and 89 unmarked corpus inputs: 566 tests total.
+- Require candidate authorization to match the implemented style list and installed version; stale RC2 approval cannot publish this feature.
+- Historical/freeform composition and PDF-001 remain unresolved. No new release has been authorized or published.
+
 ## 0.1.0rc2 — Diwani experimental candidate
 
 - Add unchanged OFL Layla Diwani 2.0 with full notices, hash and pinned provenance.

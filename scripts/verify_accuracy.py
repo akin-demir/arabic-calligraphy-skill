@@ -69,7 +69,9 @@ def main(argv=None):
     semantic_ok = all(e['exact_actual_text_mapping'] for e in extraction)
     accepted = any(e['id'] == 'PDF-001' and e.get('accepted_for_testing') for e in plan.get('known_issues', []))
     candidate_ok = (plan.get('tag') == 'v0.1.0-rc.2' and plan.get('publication_authorized') is True
-                    and plan.get('python_version') == __version__ and accepted and semantic_ok and result.wasSuccessful() and not result.skipped)
+                    and plan.get('python_version') == __version__
+                    and set(plan.get('supported_styles', [])) == {e['id'] for e in items if e['implemented']}
+                    and accepted and semantic_ok and result.wasSuccessful() and not result.skipped)
     data['candidate_ready'] = candidate_ok if args.candidate else None
     data['candidate_tag'] = plan.get('tag')
     data['pdf_limitation_accepted_for_testing'] = bool(args.candidate and accepted)

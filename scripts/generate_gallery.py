@@ -24,6 +24,12 @@ def main():
                background='#FAF6EC',align='center')
         poster('اللغة العربية',dest/f'diwani-poster.{ext}',style='diwani',
                subtitle='حروف تحمل المعنى',font_size=110)
+    for ext in ('png','svg','pdf'):
+        render('العلم نور\nالخط العربي',dest/f'thuluth.{ext}',style='thuluth',
+               width=1200,height=640,font_size=110,margin=70,
+               background='#FAF6EC',align='center')
+        poster('الخط العربي',dest/f'thuluth-poster.{ext}',style='thuluth',
+               subtitle='جمال الحرف والمعنى',font_size=125)
     render('أهلاً وسهلاً', dest / 'wordmark.svg', width=900, height=360, font_size=90,
            align='center')
     render('أ إ آ ء ؤ ئ لا لَا\nبَ بِ بُ بّ بْ بً بٍ بٌ\nالعربية — Arabic 123 / ١٢٣',

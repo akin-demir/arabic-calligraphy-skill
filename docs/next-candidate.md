@@ -26,3 +26,7 @@ RC2 adds limited Diwani typography at the owner’s request. RC3 should prioriti
 ## Deferred beyond RC3
 
 Aref Ruqaa integration, dedicated Square Kufic composition, additional traditions and independent calligraphy certification remain separate projects. They must not distract from text correctness and installation reliability.
+
+## Thuluth development addition
+
+The owner subsequently requested a Thuluth implementation. The unreleased branch adds LaylaThuluth with unvocalized PNG/SVG/PDF, 566 tests and actual examples. Before a future candidate: review the real output, test intended phrases and document the font's missing GPOS; keep historical composition and artistic review separate. RC2 authorization is not reused: the development package is 0.1.0rc3.dev0, its style list differs from RC2, and the candidate gate refuses stale approval. Future merging and release approval remain with the owner.

@@ -1,3 +1,13 @@
+# Thuluth development validation
+
+The unreleased 0.1.0rc3.dev0 source passes **566 tests**: the prior 470 plus 89 unmarked Thuluth corpus inputs and seven checks for exports, selected/embedded PDF font, source mapping, mark refusal, missing coverage, posters, CLI and visual regression (some combined within a test method). The development registry records five approximate workflows, fifteen reference-only traditions and six licensed font files. There is no expert authenticity review.
+
+LaylaThuluth 2.0 is unchanged under the shared Layla OFL. Its original fsType=8 allows editable embedding, verified by actual PDF font streams selecting LaylaThuluth. No GPOS is present, so combining marks are refused. PNG/SVG/PDF and poster samples were inspected as software outputs; they are not equivalents of the historical Tabrizi specimen. PDF-001 remains unresolved. Thuluth snapshots are in docs/validation/thuluth-* and preserve actual runtime versions; the local host still uses old pypdf while GitHub installs the required patched dependency.
+
+The owner requested implementation, not another release. RC2 artifacts are immutable. The candidate gate now checks that approved styles and version match implemented source, so stale RC2 approval does not authorize this addition. The PR is left for the owner to merge.
+
+---
+
 # RC2 accuracy and release evidence
 
 **470 local tests pass, with no failures, errors or skipped tests.** The existing corpus has 113 scenarios rendered in Naskh, modern Kufi and Nastaliq. Diwani adds 89 unmarked inputs, PNG/SVG export checks, explicit refusal of missing coverage, combining marks and PDF, and a visual reference. There are twenty documented traditions: four approximate implemented font workflows, sixteen reference-only, zero expert-authenticity certifications.

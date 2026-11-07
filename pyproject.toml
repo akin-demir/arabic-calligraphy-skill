@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77,<85", "wheel>=0.45,<1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arabic-calligraphy-skill"
+version = "0.1.0rc1"
+description = "Honest Arabic typography workflows for AI agents"
+requires-python = ">=3.11"
+license = "MIT"
+readme = "README.md"
+dependencies = ["fonttools>=4.61.1,<5"]
+
+[project.optional-dependencies]
+dev = ["ruff==0.14.3", "build==1.3.0", "pypdf==6.10.0", "Pillow==13.0.0", "PyYAML==6.0.3"]
+
+[project.scripts]
+arabic-calligraphy = "arabic_calligraphy.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+arabic_calligraphy = ["data/*.json", "data/fonts/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

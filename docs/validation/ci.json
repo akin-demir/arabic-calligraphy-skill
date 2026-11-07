@@ -1,0 +1,17 @@
+{
+  "run_id": 42353989686,
+  "head_sha": "4c2c1e5f0aa2743de8e95ce509ac4fb4ca027b51",
+  "quality": "success",
+  "security": "success",
+  "tests_passed": 365,
+  "python": "3.12.16",
+  "pypdf": "6.21.4",
+  "pango": "1.52.1",
+  "cairo": "1.18.0",
+  "audit": "No known vulnerabilities found",
+  "pdf_exact_extraction": [
+    false,
+    false,
+    false
+  ]
+}

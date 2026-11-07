@@ -1,13 +1,13 @@
 name: Clean completed README branches
 on:
   push:
-    branches: [main]
+    branches: [main, feat/readme-square-kufic]
     paths: [.github/workflows/cleanup-readme.yml]
 permissions:
   contents: read
 jobs:
   cleanup:
-    if: github.repository == 'akin-demir/arabic-calligraphy-skill' && github.ref == 'refs/heads/main'
+    if: github.repository == 'akin-demir/arabic-calligraphy-skill' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feat/readme-square-kufic')
     runs-on: ubuntu-24.04
     permissions:
       contents: write

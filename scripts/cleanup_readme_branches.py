@@ -1,4 +1,4 @@
-"""One-off owner-authorized cleanup after merging the Square Kufic README.
+"""One-off owner-authorized cleanup while preparing the Square Kufic README.
 
 Preserve active/moved branches. The old Diwani proposal is explicitly superseded;
 all other cleanup targets must be merged into the inspected main source commit.
@@ -21,7 +21,7 @@ def api(path, method="GET"):
 
 def cleanup(source, apply=False):
     if not re.fullmatch(r"[0-9a-f]{40}", source):
-        raise ValueError("An exact main source SHA is required")
+        raise ValueError("An exact inspected source SHA is required")
     report = []
     for branch in ("feat/readme-diwani", "feat/readme-square-kufic"):
         matches = [r for r in api(f"git/matching-refs/heads/{branch}")

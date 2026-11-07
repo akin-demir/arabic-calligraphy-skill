@@ -1,21 +1,46 @@
-# Actual GitHub setup
+# GitHub setup and main protection
 
-Repository: akin-demir/arabic-calligraphy-skill. Inspected through the connected GitHub app on 2026-11-07. It is private; default branch is main. Visibility has not been changed. No release or marketing post has been published.
+Checked on 2026-11-07: the repository is private, RC3 is published, and `main`
+is **not protected**. The rulesets API returned HTTP 403 with:
 
-Applied and verified through the connector: initial README bootstrap on main, development branch, incremental implementation commits. The GitHub API transfer creates different remote commit IDs from the local Git commits; both histories reflect actual completed milestones. It is not a Git push preserving local object IDs. See ENGINEERING_REPORT.md for the remote history and PR.
+> Upgrade to GitHub Pro or make this repository public to enable this feature.
 
-Repository metadata/security/administration writes are not exposed by the connected app tools, and the shell GitHub credential is invalid. Description/topics, branch protection, required checks, security feature toggles, release reviewers and tag rules have NOT been applied or verified. Committing configuration files does not apply them. No credentials are included in source.
+The connected GitHub app has no administration write tools, and the local `gh`
+credential is invalid. Neither committing workflow files nor this policy applies
+branch protection. No protection or visibility change is claimed.
 
-Prepared automation: `python scripts/configure_github.py --offline-plan` prints the intended settings without access. With a separately configured, authorized administrative gh login, run the script without flags to inspect/dry-run; `--apply` applies metadata/topics and a new main protection only when absence was established. Existing protection is preserved for manual review. The script never changes visibility or deletes branches/resources.
+## Apply the prepared policy
 
-Proposed main policy: PRs required, zero additional approvals for solo maintenance, quality/security required checks, strict updates, admin enforcement, no force push or deletion. Protected branches for private repositories depend on GitHub plan. Preserve merge commits; disable squash of this initial history. Add Dependabot alerts, secret scanning/private reporting and code scanning where your plan supports them. Give Actions read-only default permissions. Enable immutable releases and tag rules where available after a maintainer reviews them.
+The owner previously authorized public visibility. An administrator must either
+make the repository public in [General settings](https://github.com/akin-demir/arabic-calligraphy-skill/settings)
+or enable a GitHub plan that supports private repository protection.
 
-Manual release environment: create production-release and configure required reviewers if available. Until confirmed, manual artifact review and explicit maintainer publication remain mandatory. Current workflow generates candidates only.
+With an authenticated administrator `gh` session and a supported repository plan:
 
-Draft PR #1 is open: https://github.com/akin-demir/arabic-calligraphy-skill/pull/1. Patched run 42353989686 passed quality and security; the earlier failed audit was resolved by requiring pypdf 6.21.4. This workflow result does not establish repository-level security toggles or protections.
+```bash
+gh api --method PUT repos/akin-demir/arabic-calligraphy-skill/branches/main/protection --input docs/main-protection.json
+gh api repos/akin-demir/arabic-calligraphy-skill/branches/main/protection
+```
 
-## RC1 configuration and remaining administration
+The [prepared JSON](docs/main-protection.json) requires pull requests, current
+`quality` and `security` checks, resolved conversations and admin enforcement;
+it prevents force pushes and deletion. Zero additional approving reviews allows
+a solo owner to merge their own PR after checks. Existing merge history is kept.
+Inspect any existing policy before replacing it.
 
-The owner authorized a first private testing candidate. The RC1 workflow builds/tests/audits before publishing one prerelease from main, with write permission scoped to the publication job. The stable gate remains strict. Main is the trunk; short PRs and versioned tags are the development/release policy. Dependabot configuration and minimal workflow permissions are committed.
+The same settings can be entered at [branch settings](https://github.com/akin-demir/arabic-calligraphy-skill/settings/branches).
+To ensure only the owner can merge, also verify that other collaborators and apps
+do not retain write/admin access. Requiring PRs alone does not restrict merging
+to a named user; personal repositories do not support the organization-only push
+restriction list. Do not claim owner-only merging until access is verified.
 
-Still requiring GitHub administrator access (not exposed by this connector; local gh authentication is invalid): repository description/topics, disabling squash for the initial history, main protection requiring PRs and quality/security, no force push/deletion, security feature toggles and stable-release environment reviewers. Repository visibility remains private. These settings are not claimed as applied. Run the existing inspect/apply script from an authenticated admin workstation, or use Settings → Branches/Rulesets and Security. Private branch protection can require a paid GitHub plan.
+## Current workflow
+
+Main is the trunk. Short-lived feature PRs run quality/security checks before
+merging. RC3 was built from its exact main commit with checksummed source, wheel,
+skill ZIP, gallery and evidence. Historical release assets remain unchanged.
+Future release publication still requires explicit owner authorization.
+
+Completed branches are removed only after their work is merged or explicitly
+superseded. Open experimental Thuluth and dependency PRs are active work and are
+retained. The older Diwani README proposal is superseded by the Square Kufic hero.

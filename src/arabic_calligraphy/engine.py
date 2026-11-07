@@ -69,7 +69,7 @@ class Layout:
             n.set_auto_dir(self.ptr, 0)  # RTL paragraph; bidi runs remain automatic.
             encoded = text.encode("utf-8")
             n.set_text(self.ptr, encoded, len(encoded))
-            n.set_width(self.ptr, int(width * 1024))
+            n.set_width(self.ptr, int(max(1, width - 4) * 1024))
             n.set_wrap(self.ptr, 2)  # PANGO_WRAP_WORD_CHAR
             n.set_alignment(self.ptr, {"left": 0, "center": 1, "right": 2}[align])
             desc = n.font_desc((family + ",Noto Sans").encode())
@@ -115,6 +115,7 @@ class Canvas:
             raise ValueError("Output parent directory does not exist")
         self.bg = color(background)
         self.width, self.height, self.text = width, height, text
+        self.page_texts = [text] if text is not None else []
         self.surface = self.context = None
         fd, self.temp = tempfile.mkstemp(prefix=".arabic-", suffix=self.suffix, dir=self.output.parent)
         os.close(fd)
@@ -168,6 +169,10 @@ class Canvas:
                     desc.text = self.text
                     tree.getroot().insert(0, desc)
                     tree.write(self.temp, encoding="utf-8", xml_declaration=True)
+                if self.suffix == ".pdf" and self.page_texts:
+                    from .pdf import attach_actual_text
+
+                    attach_actual_text(Path(self.temp), self.page_texts)
                 os.replace(self.temp, self.output)
         finally:
             self.cleanup()

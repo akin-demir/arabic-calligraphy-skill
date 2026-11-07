@@ -9,7 +9,7 @@ description = "Honest Arabic typography workflows for AI agents"
 requires-python = ">=3.11"
 license = "MIT"
 readme = "README.md"
-dependencies = ["fonttools>=4.61.1,<5"]
+dependencies = ["fonttools>=4.61.1,<5", "pypdf>=6.10.0,<7"]
 
 [project.optional-dependencies]
 dev = ["ruff==0.14.3", "build==1.3.0", "pypdf==6.10.0", "Pillow==13.0.0", "PyYAML==6.0.3"]

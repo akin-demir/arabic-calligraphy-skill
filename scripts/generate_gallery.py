@@ -2,6 +2,7 @@
 from pathlib import Path
 from arabic_calligraphy.engine import render
 from arabic_calligraphy.layouts import certificate, document, poster
+from generate_readme_hero import generate_hero
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -30,6 +31,7 @@ def main():
            dest / 'typography.png', width=1000, height=640, font_size=48,
            background='#FFFFFF', align='right')
     document((ROOT / 'examples/documents/report.md').read_text(), dest / 'report.pdf')
+    generate_hero()
 
 
 if __name__ == '__main__':

@@ -20,6 +20,22 @@ python -m arabic_calligraphy.cli grid --input examples/square-kufic/allah-study.
 python -m arabic_calligraphy.cli grid --input examples/square-kufic/allah-study.json --output study.png --unit 64
 ```
 
+## README motif
+
+The [README motif](../examples/square-kufic/readme-rosette.json) places four copies
+of the small Allah study around a central cross of negative space. Physical cells
+rotate clockwise by 0°, 90°, 180° and 270°; the original Unicode is preserved as
+`الله الله الله الله`. Each copy keeps its own source-span labels. No filler
+strokes or mirrored letters are added. This is a manual composition awaiting
+independent review, not evidence of automatic arbitrary-text support.
+
+Regenerate the banner with `PYTHONPATH=src python scripts/generate_readme_hero.py`.
+The full gallery script also regenerates it. For a plain grid export, use:
+
+```bash
+arabic-calligraphy grid --input examples/square-kufic/readme-rosette.json --output motif.svg
+```
+
 ## Editable format
 
 The JSON uses `format: square-kufic-grid-v1`, exact original Unicode `text`,

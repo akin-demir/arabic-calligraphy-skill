@@ -1,0 +1,23 @@
+name: Clean completed README branches
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/cleanup-readme.yml]
+permissions:
+  contents: read
+jobs:
+  cleanup:
+    if: github.repository == 'akin-demir/arabic-calligraphy-skill' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Remove only the superseded and merged README branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: python scripts/cleanup_readme_branches.py --apply

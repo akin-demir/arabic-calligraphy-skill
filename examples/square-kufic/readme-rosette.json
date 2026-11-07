@@ -1,0 +1,108 @@
+{
+  "format": "square-kufic-grid-v1",
+  "text": "الله الله الله الله",
+  "letters": [
+    {
+      "id": "A",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "id": "B",
+      "start": 1,
+      "end": 2
+    },
+    {
+      "id": "C",
+      "start": 2,
+      "end": 3
+    },
+    {
+      "id": "D",
+      "start": 3,
+      "end": 4
+    },
+    {
+      "id": "E",
+      "start": 5,
+      "end": 6
+    },
+    {
+      "id": "F",
+      "start": 6,
+      "end": 7
+    },
+    {
+      "id": "G",
+      "start": 7,
+      "end": 8
+    },
+    {
+      "id": "H",
+      "start": 8,
+      "end": 9
+    },
+    {
+      "id": "I",
+      "start": 10,
+      "end": 11
+    },
+    {
+      "id": "J",
+      "start": 11,
+      "end": 12
+    },
+    {
+      "id": "K",
+      "start": 12,
+      "end": 13
+    },
+    {
+      "id": "L",
+      "start": 13,
+      "end": 14
+    },
+    {
+      "id": "M",
+      "start": 15,
+      "end": 16
+    },
+    {
+      "id": "N",
+      "start": 16,
+      "end": 17
+    },
+    {
+      "id": "O",
+      "start": 17,
+      "end": 18
+    },
+    {
+      "id": "P",
+      "start": 18,
+      "end": 19
+    }
+  ],
+  "rows": [
+    "....C.B.A.HHH......",
+    "....C.B.A.H.H......",
+    "....C.B.A.HHH......",
+    "....C.B.A.G........",
+    "....C.B.A.GGGGGGGGG",
+    "....C.B.A.F........",
+    "DDD.C.B.A.FFFFFFFFF",
+    "D.D.C.B.A..........",
+    "DDDCCBB.A.EEEEEEEEE",
+    "...................",
+    "MMMMMMMMM.I.JJKKLLL",
+    "..........I.J.K.L.L",
+    "NNNNNNNNN.I.J.K.LLL",
+    "........N.I.J.K....",
+    "OOOOOOOOO.I.J.K....",
+    "........O.I.J.K....",
+    "......PPP.I.J.K....",
+    "......P.P.I.J.K....",
+    "......PPP.I.J.K...."
+  ],
+  "review": "Original manual study: four copies of the Allah study rotated clockwise by 0, 90, 180 and 270 degrees around a central cross of negative space. Rotations apply only to physical cells, never the Unicode source. No extra filler strokes, mirroring or independent calligrapher certification."
+}

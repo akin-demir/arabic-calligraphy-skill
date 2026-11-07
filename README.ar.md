@@ -4,7 +4,11 @@
 
 [English](README.md) · [التثبيت](docs/installation.md) · [نتائج الدقة](ACCURACY.md)
 
-![ملصق مولّد فعلياً](examples/gallery/poster.png)
+[![تكوين هندسي من أربع دراسات يدوية لكلمة الله بالكوفي المربع](examples/gallery/readme-square-kufic.png)](examples/gallery/readme-square-kufic.svg)
+
+[تنزيل RC3](https://github.com/akin-demir/arabic-calligraphy-skill/releases/tag/v0.1.0-rc.3) · [الشبكة القابلة للتعديل](examples/square-kufic/readme-rosette.json) · [دليل الكوفي المربع](docs/square-kufic.md)
+
+يكرر التكوين كلمة «الله» أربع مرات مع تدوير الخلايا الهندسية فقط، دون عكس النص الأصلي. هذا عمل يدوي تجريبي لم يخضع لمراجعة مستقلة من خطاط.
 
 يوفّر المشروع تنضيداً عربياً محلياً باستخدام Pango وHarfBuzz وCairo، مع تصدير PNG وSVG وPDF. يشمل الدليل عشرين تقليداً، لكن التنفيذ الحالي يدعم التنضيد بخطوط Noto للنسخ والكوفي والنستعليق، ويضيف المرشح الثاني خط ليلى ديواني للنص غير المشكول بصيغتي PNG وSVG فقط. لا تعني هذه النتائج اعتماداً فنياً من خطاط متخصص.
 

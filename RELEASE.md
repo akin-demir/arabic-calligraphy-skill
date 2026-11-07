@@ -1,14 +1,19 @@
-# Release procedure
+# Release policy
 
-Current decision: NOT READY — PDF extraction and external verification blockers remain. The package version is a candidate, not a published release.
+The owner authorized the first private experimental release candidate, v0.1.0-rc.1, in this session. RC1 may be tried with PDF-001 explicitly documented. This authorization does not approve a stable release, another candidate, a repository visibility change or marketing publication.
 
-1. Fix all critical text integrity/extraction defects. Run repository lint, all tests, gallery generation and `python scripts/verify_accuracy.py --release`. The strict gate currently fails honestly on extraction.
-2. Update CHANGELOG, version, capabilities, font manifest and accuracy evidence together. Any claimed authentic style needs independent human review evidence.
-3. Build from a clean checkout with `python -m build`; inspect wheel/sdist contents and install the wheel into a fresh environment. Run actual CLI rendering there. Record dependency versions and artifact hashes.
-4. Ensure remote quality/security checks pass for the exact commit. Verify settings in GITHUB_SETUP.md, including required checks, release environment reviewers and tag protection. Do not bypass restrictions unsupported by a private repository plan; document a maintainer-controlled manual process instead.
-5. Obtain explicit maintainer approval for a versioned tag and release. A maintainer may then create and push an immutable version tag. Never overwrite an existing tag/release.
-6. Run the manual candidate workflow for that existing tag. It checks out the tag, reruns gates and builds an artifact; it never publishes automatically.
-7. A maintainer reviews the downloaded artifact and creates a draft GitHub Release with changelog, date, supported matrix, accuracy JSON, font/dependency info, installation instructions, examples and known limitations. Obtain explicit approval before making that draft public. Verify artifacts correspond to the tagged source. Do not publish to PyPI as an incidental step.
-8. Test `npx skills add akin-demir/arabic-calligraphy-skill` against the merged authorized repository and target hosts. Verify any skills.sh listing before announcing it. Publish marketing only with separate authorization.
+## Experimental RC1
 
-Use the `production-release` GitHub environment with required reviewers where the plan permits. The workflow does not rely on environment creation to establish approval: it creates no public release even if the environment has no reviewer rule. See .github/RELEASE_TEMPLATE.md for content. Preserve meaningful development history in a non-squash merge.
+`release-plan.json` records the one-off scope. `verify_accuracy.py --candidate` requires all tests, font checks and exact semantic source mappings to pass, with the PDF extraction limitation explicitly accepted for RC1. Its report keeps `release_ready: false` while reporting candidate readiness separately. The normal `--release` stable gate remains strict and still fails on incorrect PDF extraction.
+
+The RC1 workflow runs only on main when its release configuration is merged, builds and audits the exact commit, bundles checksummed source/wheel/examples/evidence, and publishes one private GitHub prerelease. It has read-only build permissions and grants contents write only to the publication job. It does not create a stable release, change visibility, overwrite an existing tag/release, or publish to PyPI. Subsequent candidates require new explicit owner approval and a reviewed change.
+
+## Trunk-based development
+
+Main is the trunk. Merge short-lived PRs after quality and security pass; retain the actual initial history with a merge commit. Tag release candidates from main. No develop or long-lived release branch is required. Repository-level protections must be applied and verified separately; workflow files do not establish those controls.
+
+## Stable release gate
+
+Before v0.1.0 stable: fix critical PDF extraction for documented target readers; run lint, all tests, gallery and `python scripts/verify_accuracy.py --release`; pass the dependency audit; verify installation, artifact/source identity, protections and release approval controls; and obtain explicit owner publication approval. Any authenticity claim additionally requires independent human review evidence. Never overwrite historical tags or releases.
+
+See [RC1 notes](docs/releases/v0.1.0-rc.1.md), [RC2 plan](docs/next-candidate.md), [accuracy](ACCURACY.md) and [repository settings](GITHUB_SETUP.md).

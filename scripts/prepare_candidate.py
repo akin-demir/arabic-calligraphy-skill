@@ -1,0 +1,64 @@
+"""Bundle exact-commit RC1 artifacts and evidence after all candidate checks pass."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import subprocess
+import zipfile
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--commit', required=True)
+    parser.add_argument('--output', type=Path, default=ROOT/'candidate')
+    args = parser.parse_args()
+    head = subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    if args.commit != head:
+        raise SystemExit('Requested candidate commit must equal the checked-out HEAD')
+    subprocess.run(['git','diff','--exit-code','--','src','pyproject.toml','SKILL.md',
+                    'capabilities.json','release-plan.json'],cwd=ROOT,check=True)
+    plan = json.loads((ROOT/'release-plan.json').read_text())
+    evidence = json.loads((ROOT/'reports/accuracy.json').read_text())
+    if plan['tag'] != 'v0.1.0-rc.1' or not evidence.get('candidate_ready'):
+        raise SystemExit('RC1 authorization and passing candidate evidence are required')
+    if evidence.get('candidate_tag') != plan['tag']:
+        raise SystemExit('Evidence is for a different candidate')
+    dest = args.output.resolve()
+    dest.mkdir(parents=True,exist_ok=True)
+    if list(dest.iterdir()):
+        raise SystemExit('Candidate output directory must be empty; existing artifacts preserved')
+    wheels = list((ROOT/'dist').glob('*0.1.0rc1*.whl'))
+    sources = list((ROOT/'dist').glob('*0.1.0rc1*.tar.gz'))
+    if len(wheels) != 1 or len(sources) != 1:
+        raise SystemExit('Expected exactly one RC1 wheel and source distribution')
+    with zipfile.ZipFile(wheels[0]) as archive:
+        assert sum(name.endswith('.ttf') for name in archive.namelist()) == 4
+        assert any('OFL-and-notices.txt' in name for name in archive.namelist())
+    for path in wheels+sources:
+        shutil.copy2(path,dest/path.name)
+    subprocess.run(['git','archive','--format=tar.gz','--prefix=arabic-calligraphy-skill/',
+                    f'--output={dest / "arabic-calligraphy-skill-source.tar.gz"}',head],
+                   cwd=ROOT,check=True)
+    with zipfile.ZipFile(dest/'gallery.zip','w',zipfile.ZIP_DEFLATED) as archive:
+        for path in sorted((ROOT/'examples/gallery').iterdir()):
+            if path.is_file():
+                archive.write(path,path.name)
+    for name in ('accuracy.json','font-licenses.json'):
+        shutil.copy2(ROOT/'reports'/name,dest/name)
+    shutil.copy2(ROOT/'docs/releases/v0.1.0-rc.1.md',dest/'release-notes.md')
+    manifest = dict(tag=plan['tag'],python_version=plan['python_version'],commit=head,
+                    channel=plan['channel'],known_issues=plan['known_issues'],
+                    tests_passed=evidence['passed'],stable_release_ready=False,
+                    next_candidate_plan='docs/next-candidate.md')
+    (dest/'release-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    sums = ''.join(f'{hashlib.sha256(path.read_bytes()).hexdigest()}  {path.name}\n'
+                   for path in sorted(dest.iterdir()) if path.is_file())
+    (dest/'SHA256SUMS').write_text(sums)
+    print(f'Prepared {len(list(dest.iterdir()))} assets for {plan["tag"]} at {head}')
+
+
+if __name__ == '__main__':
+    main()

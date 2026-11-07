@@ -13,3 +13,9 @@ Proposed main policy: PRs required, zero additional approvals for solo maintenan
 Manual release environment: create production-release and configure required reviewers if available. Until confirmed, manual artifact review and explicit maintainer publication remain mandatory. Current workflow generates candidates only.
 
 Draft PR #1 is open: https://github.com/akin-demir/arabic-calligraphy-skill/pull/1. Patched run 42353989686 passed quality and security; the earlier failed audit was resolved by requiring pypdf 6.21.4. This workflow result does not establish repository-level security toggles or protections.
+
+## RC1 configuration and remaining administration
+
+The owner authorized a first private testing candidate. The RC1 workflow builds/tests/audits before publishing one prerelease from main, with write permission scoped to the publication job. The stable gate remains strict. Main is the trunk; short PRs and versioned tags are the development/release policy. Dependabot configuration and minimal workflow permissions are committed.
+
+Still requiring GitHub administrator access (not exposed by this connector; local gh authentication is invalid): repository description/topics, disabling squash for the initial history, main protection requiring PRs and quality/security, no force push/deletion, security feature toggles and stable-release environment reviewers. Repository visibility remains private. These settings are not claimed as applied. Run the existing inspect/apply script from an authenticated admin workstation, or use Settings → Branches/Rulesets and Security. Private branch protection can require a paid GitHub plan.

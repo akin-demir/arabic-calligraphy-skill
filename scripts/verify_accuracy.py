@@ -13,6 +13,7 @@ import warnings
 from xml.etree import ElementTree as ET
 
 from pypdf import PdfReader
+from arabic_calligraphy import __version__
 from arabic_calligraphy.engine import backend, render, styles
 from arabic_calligraphy.fonts import coverage
 
@@ -21,7 +22,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--release',action='store_true',help='Also enforce exact PDF extraction')
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--release',action='store_true',help='Stable: enforce exact PDF extraction')
+    mode.add_argument('--candidate',action='store_true',help='Explicitly scoped experimental RC1')
     args = parser.parse_args(argv)
     suite = unittest.defaultTestLoader.discover(str(ROOT/'tests'))
     output = io.StringIO()
@@ -62,10 +65,18 @@ def main(argv=None):
         blockers=['Reader-independent exact Arabic PDF extraction is not established.',
                   'Remote CI and security audit must pass before release.',
                   'Maintainer publication approval is required.'])
+    plan = json.loads((ROOT/'release-plan.json').read_text()) if args.candidate else {}
+    semantic_ok = all(e['exact_actual_text_mapping'] for e in extraction)
+    accepted = any(e['id'] == 'PDF-001' and e.get('accepted_for_rc1_testing') for e in plan.get('known_issues', []))
+    candidate_ok = (plan.get('tag') == 'v0.1.0-rc.1' and plan.get('publication_authorized') is True
+                    and plan.get('python_version') == __version__ and accepted and semantic_ok and result.wasSuccessful() and not result.skipped)
+    data['candidate_ready'] = candidate_ok if args.candidate else None
+    data['candidate_tag'] = plan.get('tag')
+    data['pdf_limitation_accepted_for_testing'] = bool(args.candidate and accepted)
     (reports/'accuracy.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     (reports/'font-licenses.json').write_text(json.dumps({'checked_fonts':len(coverage()),'license':'OFL-1.1','hashes_valid':True},indent=2)+'\n')
     print(json.dumps(data,ensure_ascii=False,indent=2))
-    if not result.wasSuccessful() or (args.release and not all(e['exact_extraction'] for e in extraction)):
+    if (args.candidate and not candidate_ok) or not result.wasSuccessful() or (args.release and not all(e['exact_extraction'] for e in extraction)):
         return 1
     return 0
 

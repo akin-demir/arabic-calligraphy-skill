@@ -28,4 +28,6 @@ Human inspection in this session covered the actual Naskh sample, poster and Nas
 
 Wheel build and a CLI render from an installed wheel passed in a separate venv using shared host dependencies. Clean dependency/package installation passed in GitHub Actions on Ubuntu with patched pypdf 6.21.4. End-to-end agent host execution and Skills CLI GitHub installation remain unverified. Remote CI and vulnerability audit results are tracked in ENGINEERING_REPORT.md; do not infer them from local tests.
 
-**Release decision: NOT READY — BLOCKERS REMAIN.** Exact reader text extraction, remote quality/security validation, repository administration verification and explicit maintainer publication approval are outstanding. No public release, tag, PyPI package, skills.sh listing or marketing publication is claimed.
+**Stable release: NOT READY — BLOCKERS REMAIN. RC1: authorized for experimental testing with PDF-001 disclosed.** Exact reader text extraction, remote quality/security validation, repository administration verification and explicit maintainer publication approval are outstanding. No public release, tag, PyPI package, skills.sh listing or marketing publication is claimed.
+
+The owner subsequently requested the first private RC so it can be tried before further development. `--candidate` separates this narrow testing approval from `--release`; it does not hide extraction failures or promote any authenticity classification. See release-plan.json and docs/next-candidate.md.

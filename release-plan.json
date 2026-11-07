@@ -1,0 +1,22 @@
+{
+  "tag": "v0.1.0-rc.1",
+  "python_version": "0.1.0rc1",
+  "channel": "experimental-prerelease",
+  "publication_authorized": true,
+  "authorization_scope": "First private GitHub release candidate requested by the repository owner in this session; no stable release or visibility change authorized.",
+  "supported_styles": [
+    "naskh",
+    "kufic",
+    "nastaliq"
+  ],
+  "known_issues": [
+    {
+      "id": "PDF-001",
+      "summary": "Arabic PDF raw extraction/search/copy behavior is reader-dependent and is not lossless.",
+      "accepted_for_rc1_testing": true,
+      "blocks_stable": true
+    }
+  ],
+  "next_candidate": "v0.1.0-rc.2",
+  "next_candidate_plan": "docs/next-candidate.md"
+}

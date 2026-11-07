@@ -6,3 +6,4 @@ build/
 dist/
 reports/
 .ruff_cache/
+candidate/

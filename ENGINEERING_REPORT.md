@@ -47,3 +47,7 @@ Agent Skills frontmatter and reference structure are checked locally. Codex/Clau
 ## Release decision
 
 **NOT READY — BLOCKERS REMAIN.** Resolve exact PDF extraction for the documented target readers, pass patched-dependency remote quality/security checks, verify required GitHub settings and Skills CLI/host installation, and obtain explicit maintainer approval before publication. The manual candidate workflow reruns a strict release gate and produces artifacts only; it never publishes automatically. Do not promote reference-only traditions or claim classical authenticity to make a release matrix look complete.
+
+## Subsequent owner-authorized RC1 decision
+
+The owner requested a first private release candidate for testing before continuing. Experimental RC1 publication is now authorized with PDF-001 disclosed; this supersedes the earlier prohibition on any candidate publication, while leaving the stable PDF gate and future-release approval intact. RC1 assets are built from the exact main commit by GitHub Actions. See release-plan.json, RC1 notes and the RC2 plan. Repository administration controls remain unapplied where the connection lacks capability.

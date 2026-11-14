@@ -9,10 +9,10 @@ description = "Honest Arabic typography workflows for AI agents"
 requires-python = ">=3.11"
 license = "MIT"
 readme = "README.md"
-dependencies = ["fonttools>=4.61.1,<5", "pypdf>=6.21.4,<7"]
+dependencies = ["fonttools>=4.61.1,<5", "pypdf>=6.21.4,<8"]
 
 [project.optional-dependencies]
-dev = ["build==1.6.1", "pypdf==6.21.4", "Pillow==13.0.0", "PyYAML==6.0.3"]
+dev = ["build==1.6.1", "pypdf==7.0.1", "Pillow==13.0.0", "PyYAML==6.0.3"]
 
 [project.scripts]
 arabic-calligraphy = "arabic_calligraphy.cli:main"

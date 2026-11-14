@@ -1,5 +1,5 @@
 fonttools==4.68.0
-pypdf==6.21.4
+pypdf==7.0.1
 Pillow==13.0.0
 PyYAML==6.0.3
 build==1.6.1
